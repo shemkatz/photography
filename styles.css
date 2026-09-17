@@ -1,0 +1,657 @@
+/* ==========================================================================
+   Shem Katz Photography — shared stylesheet
+   Loaded by every page in the site. Edit tokens in :root to restyle
+   everything at once (colors, fonts, spacing).
+   ========================================================================== */
+
+/* Bomstad Display — licensed display typeface, self-hosted from /fonts.
+   Files live in the "Bomstad Display" folder at the repo root; these
+   @font-face rules point at the WOFF2/WOFF copies in /fonts instead so
+   the URLs don't have to deal with spaces in folder/file names. */
+@font-face {
+  font-family: "Bomstad Display";
+  src: url("fonts/BomstadDisplay-Thin.woff2") format("woff2"),
+       url("fonts/BomstadDisplay-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bomstad Display";
+  src: url("fonts/BomstadDisplay-ExtraLight.woff2") format("woff2"),
+       url("fonts/BomstadDisplay-ExtraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bomstad Display";
+  src: url("fonts/BomstadDisplay-Light.woff2") format("woff2"),
+       url("fonts/BomstadDisplay-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bomstad Display";
+  src: url("fonts/BomstadDisplay-Regular.woff2") format("woff2"),
+       url("fonts/BomstadDisplay-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bomstad Display";
+  src: url("fonts/BomstadDisplay-Medium.woff2") format("woff2"),
+       url("fonts/BomstadDisplay-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bomstad Display";
+  src: url("fonts/BomstadDisplay-SemiBold.woff2") format("woff2"),
+       url("fonts/BomstadDisplay-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bomstad Display";
+  src: url("fonts/BomstadDisplay-Bold.woff2") format("woff2"),
+       url("fonts/BomstadDisplay-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bomstad Display";
+  src: url("fonts/BomstadDisplay-ExtraBold.woff2") format("woff2"),
+       url("fonts/BomstadDisplay-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bomstad Display";
+  src: url("fonts/BomstadDisplay-Black.woff2") format("woff2"),
+       url("fonts/BomstadDisplay-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --text: #1a1a18;
+  --text-muted: #5c5a54;
+  --accent: #3d5c46;
+  --accent-soft: #e7ebe5;
+  --border: #dedad2;
+  --placeholder: #c9c4b8;
+  --placeholder-alt: #b9c4b6;
+
+  --font-display: "Bomstad Display", -apple-system, sans-serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+
+  --max-width: 1150px;
+  --gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14140f;
+    --surface: #1c1c16;
+    --text: #f2f0e8;
+    --text-muted: #a9a596;
+    --accent: #7fa383;
+    --accent-soft: #23281f;
+    --border: #33322a;
+    --placeholder: #2b2a23;
+    --placeholder-alt: #262c22;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14140f;
+  --surface: #1c1c16;
+  --text: #f2f0e8;
+  --text-muted: #a9a596;
+  --accent: #7fa383;
+  --accent-soft: #23281f;
+  --border: #33322a;
+  --placeholder: #2b2a23;
+  --placeholder-alt: #262c22;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ==========================================================================
+   HEADER / NAV
+   Each menu item and dropdown entry is a real link to its own page —
+   there is no in-page scrolling here. The desktop "Work" menu opens on
+   hover/focus (":focus-within" keeps it usable with a keyboard). Below
+   700px that hover menu is hidden and a native <details> menu takes
+   over, so the same links stay reachable without any JavaScript.
+   ========================================================================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+nav.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+  gap: 1.5rem;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+.nav-links a:hover,
+.nav-links a.current { color: var(--text); }
+.nav-links a.current { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+
+.has-dropdown { position: relative; }
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.5rem;
+  min-width: 170px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown a {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+.dropdown a:hover { background: var(--bg); color: var(--text); }
+.dropdown a.current { color: var(--accent); font-weight: 600; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown { transition: none; }
+}
+
+@media (max-width: 700px) {
+  .nav-links { display: none; }
+}
+
+/* Mobile menu (native <details>, no JS) */
+.mobile-menu { display: none; }
+@media (max-width: 700px) {
+  .mobile-menu { display: block; position: relative; }
+}
+.mobile-menu summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.95rem;
+  color: var(--text);
+  padding: 0.4rem 0.1rem;
+}
+.mobile-menu summary::-webkit-details-marker { display: none; }
+.mobile-menu summary::after { content: "Menu ▾"; }
+.mobile-menu[open] summary::after { content: "Menu ▴"; }
+.mobile-menu[open] summary { content: ""; }
+.mobile-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.25rem);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  min-width: 190px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.mobile-panel a { font-size: 0.95rem; color: var(--text-muted); padding: 0.15rem 0; }
+.mobile-panel a.current { color: var(--accent); font-weight: 600; }
+.mobile-panel .sub-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-top: 0.4rem; }
+.mobile-panel hr { border: none; border-top: 1px solid var(--border); margin: 0.3rem 0; width: 100%; }
+
+/* ==========================================================================
+   HERO — full-bleed, rotating photo placeholders
+   Swap each .hero-slide's background for a real photo, e.g.
+     background: url('images/coast-01.jpg') center/cover;
+   The crossfade is pure CSS (see @keyframes heroFade below) so it needs
+   no JavaScript — it keeps rotating even if scripts are blocked.
+   ========================================================================== */
+.hero {
+  position: relative;
+  height: min(78vh, 620px);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background: var(--placeholder) center/cover;
+  opacity: 0;
+  animation: heroFade 20s infinite;
+}
+.hero-slide::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: 1rem;
+  right: 1.25rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+}
+.hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-slide:nth-child(2) { animation-delay: 5s; background-color: var(--placeholder-alt); }
+.hero-slide:nth-child(3) { animation-delay: 10s; }
+.hero-slide:nth-child(4) { animation-delay: 15s; background-color: var(--placeholder-alt); }
+
+@keyframes heroFade {
+  0%    { opacity: 0; }
+  3%    { opacity: 1; }
+  22%   { opacity: 1; }
+  27%   { opacity: 0; }
+  100%  { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide { animation: none; opacity: 0; }
+  .hero-slide:nth-child(1) { opacity: 1; }
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0) 55%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 2.5rem 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  color: #fdfcf9;
+}
+
+.hero-content h1 {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin: 0 0 0.5rem;
+  text-wrap: balance;
+}
+
+.hero-content p {
+  max-width: 42ch;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* ==========================================================================
+   PAGE HEADER — the quieter opener used on every page besides Home
+   ========================================================================== */
+.page-header {
+  padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(1.5rem, 4vw, 2rem);
+  border-bottom: 1px solid var(--border);
+}
+.page-header .eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem;
+}
+.page-header h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin: 0 0 0.6rem;
+  text-wrap: balance;
+}
+.page-header p {
+  color: var(--text-muted);
+  max-width: 56ch;
+  margin: 0;
+}
+
+/* ==========================================================================
+   ABOUT TEASER (home page)
+   ========================================================================== */
+.about-teaser {
+  padding: clamp(2.5rem, 6vw, 4rem) 0;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--gap);
+  align-items: center;
+}
+@media (max-width: 700px) {
+  .about-teaser { grid-template-columns: 1fr; }
+}
+.about-teaser .about-photo {
+  aspect-ratio: 1;
+  background: var(--placeholder);
+  border-radius: 3px;
+  width: 100%;
+}
+.about-teaser h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin: 0 0 0.6rem;
+}
+.about-teaser p {
+  color: var(--text-muted);
+  max-width: 58ch;
+  margin: 0 0 0.9rem;
+}
+.about-teaser a.cta {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+.about-teaser a.cta:hover { text-decoration: underline; }
+
+/* ==========================================================================
+   FULL ABOUT (about.html)
+   ========================================================================== */
+.about-full {
+  padding: 1rem 0 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: var(--gap);
+}
+@media (max-width: 800px) {
+  .about-full { grid-template-columns: 1fr; }
+}
+.about-full h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.8rem;
+  margin-top: 0;
+}
+.about-full .about-photo {
+  aspect-ratio: 1;
+  background: var(--placeholder);
+  border-radius: 3px;
+  max-width: 320px;
+}
+.about-full p { color: var(--text-muted); }
+
+/* ==========================================================================
+   TILES — Shop / Journal / Book a session (home page)
+   ========================================================================== */
+.tiles-section { padding: 0 0 clamp(2.5rem, 6vw, 4rem); }
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+@media (max-width: 800px) {
+  .tiles { grid-template-columns: 1fr; }
+}
+.tile {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.5rem;
+  background: var(--surface);
+  display: block;
+}
+.tile:hover { border-color: var(--accent); }
+.tile h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+.tile p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin: 0 0 0.9rem;
+}
+.tile .status {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+/* ==========================================================================
+   GALLERY — used on Work category pages
+   ========================================================================== */
+.gallery-section { padding: clamp(1.5rem, 4vw, 2.5rem) 0 5rem; }
+.section-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 180px;
+  grid-auto-flow: dense;
+  gap: 0.6rem;
+}
+@media (max-width: 700px) {
+  .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; }
+}
+.photo {
+  background: var(--placeholder);
+  border-radius: 2px;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.6rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+.photo.wide { grid-column: span 2; }
+.photo.tall { grid-row: span 2; }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo:has(img) { padding: 0; }
+
+/* ==========================================================================
+   COMING SOON — Shop / Journal / Book a session pages
+   ========================================================================== */
+.coming-soon {
+  padding: clamp(3rem, 10vw, 6rem) 0;
+  text-align: center;
+  max-width: 46ch;
+  margin: 0 auto;
+}
+.coming-soon .status {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+.coming-soon h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  margin: 0 0 0.75rem;
+}
+.coming-soon p { color: var(--text-muted); margin: 0 0 1.5rem; }
+.coming-soon a.back {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.coming-soon a.back:hover { text-decoration: underline; }
+
+/* ==========================================================================
+   CONTACT
+   ========================================================================== */
+.contact-section {
+  padding: 1rem 0 clamp(3rem, 6vw, 5rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+}
+@media (max-width: 800px) {
+  .contact-section { grid-template-columns: 1fr; }
+}
+.contact-section h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin-top: 0;
+}
+.contact-section > div:first-child p { color: var(--text-muted); }
+
+.contact-narrow { max-width: 560px; margin: 0 auto; padding: 1rem 0 4rem; }
+
+form.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.contact-form label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+.contact-form textarea { resize: vertical; min-height: 100px; }
+.contact-form button {
+  align-self: flex-start;
+  padding: 0.7rem 1.6rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.contact-form button:hover { opacity: 0.9; }
+
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible,
+.contact-form button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   FOOTER — identical on every page
+   ========================================================================== */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+}
+footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+.social-links { display: flex; gap: 1rem; }
+.social-links a {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.social-links a:hover { border-color: var(--accent); color: var(--accent); }
+.footer-meta { color: var(--text-muted); font-size: 0.85rem; }
+
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *:not(.hero-slide) { transition: none !important; }
+}
