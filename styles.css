@@ -193,14 +193,18 @@ nav.container {
 .nav-links a.current { color: var(--text); }
 .nav-links a.current { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 6px; }
 
-/* Language switch — small dropdown, always visible (desktop & mobile) */
+/* Language switch — small dropdown, always visible (desktop & mobile).
+   It's the last item in nav-right, so it always sits at the far right
+   of the header, after Work/About/Contact. The left border + padding
+   give it a visual break from the main nav links. */
 .lang-switch {
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.03em;
   color: var(--text-muted);
   cursor: pointer;
-  padding: 0.3rem 0.1rem;
+  padding: 0.3rem 0.1rem 0.3rem 1.25rem;
+  border-left: 1px solid var(--border);
 }
 .lang-switch:hover { color: var(--text); }
 .lang-switch::after { content: " \25BE"; font-size: 0.7em; }
@@ -211,30 +215,43 @@ nav.container {
 
 .dropdown {
   position: absolute;
+  /* top:0 + padding-top (instead of a margin-top gap) keeps the hover
+     area continuous from trigger straight into the menu — a gap here
+     is the classic bug where hover works only after a click/focus. */
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: 0.75rem;
+  margin-top: 0;
+  padding-top: 0.6rem;
+  background: transparent;
+  min-width: 170px;
+  display: flex;
+  flex-direction: column;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease;
+}
+.dropdown-panel {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 4px;
   padding: 0.5rem;
-  min-width: 170px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(-50%) translateY(-4px);
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  transform: translateY(-4px);
+  transition: transform 0.15s ease;
 }
 
 .has-dropdown:hover .dropdown,
 .has-dropdown:focus-within .dropdown {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0);
+}
+.has-dropdown:hover .dropdown-panel,
+.has-dropdown:focus-within .dropdown-panel {
+  transform: translateY(0);
 }
 
 .dropdown a {
