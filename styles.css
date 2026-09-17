@@ -618,12 +618,15 @@ nav.container {
 
 .contact-narrow { max-width: 560px; margin: 0 auto; padding: 1rem 0 4rem; }
 
-.direct-label {
+/* ".page-header p" (used for the intro paragraph above this) sets
+   margin:0 and, being more specific than ".direct-label" alone, was
+   winning and cancelling this spacing — "p.direct-label" beats it. */
+p.direct-label {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-muted);
-  margin: 1.25rem 0 0.6rem;
+  margin: 1.75rem 0 0.6rem;
 }
 .contact-direct {
   display: flex;
