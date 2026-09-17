@@ -179,6 +179,7 @@ nav.container {
 
 .nav-right {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 1.5rem;
 }
