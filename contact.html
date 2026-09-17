@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=7">
+<link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
   <header>
@@ -95,11 +95,25 @@
       </div>
     </section>
     <section class="container contact-narrow">
-      <!-- This form doesn't send anywhere yet. Point its "action" at a
-           service like Formspree (https://formspree.io) to make it
-           functional without writing any backend code:
-           <form action="https://formspree.io/f/yourFormId" method="POST"> -->
-      <form class="contact-form" onsubmit="return false;">
+      <!-- Sends via FormSubmit (https://formsubmit.co) — a free
+           form-to-email service, no backend of your own needed.
+           contact-form.js submits this with fetch() so the page shows
+           an inline confirmation instead of redirecting.
+           IMPORTANT ONE-TIME STEP: the first submission ever sent to
+           shemkatz@hotmail.com through this form triggers a
+           confirmation email from FormSubmit — click the link in it,
+           or messages won't actually arrive. -->
+      <form
+        class="contact-form"
+        action="https://formsubmit.co/shemkatz@hotmail.com"
+        method="POST"
+        data-sending="Sending…"
+        data-success="Thanks — your message has been sent. I'll get back to you within a couple of days."
+        data-error="Something went wrong sending that. Please try again, or email me directly at shemkatz@hotmail.com."
+      >
+        <input type="hidden" name="_subject" value="New message from shemkatz.com (EN)">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <div>
           <label for="name">Name</label>
           <input id="name" name="name" type="text" required>
@@ -114,7 +128,9 @@
         </div>
         <button type="submit">Send message</button>
       </form>
+      <p id="form-status" class="form-status" hidden></p>
     </section>
+    <script src="contact-form.js" defer></script>
   </main>
   <footer>
     <div class="container">

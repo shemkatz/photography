@@ -88,6 +88,8 @@
   --text-muted: #5c5a54;
   --accent: #3d5c46;
   --accent-soft: #e7ebe5;
+  --error: #9a3b32;
+  --error-soft: #f5e6e3;
   --border: #dedad2;
   --placeholder: #c9c4b8;
   --placeholder-alt: #b9c4b6;
@@ -107,6 +109,8 @@
     --text-muted: #a9a596;
     --accent: #7fa383;
     --accent-soft: #23281f;
+    --error: #e08b7d;
+    --error-soft: #2e1f1c;
     --border: #33322a;
     --placeholder: #2b2a23;
     --placeholder-alt: #262c22;
@@ -119,6 +123,8 @@
   --text-muted: #a9a596;
   --accent: #7fa383;
   --accent-soft: #23281f;
+  --error: #e08b7d;
+  --error-soft: #2e1f1c;
   --border: #33322a;
   --placeholder: #2b2a23;
   --placeholder-alt: #262c22;
@@ -677,6 +683,16 @@ form.contact-form {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+.contact-form button:disabled { opacity: 0.7; cursor: default; }
+
+.form-status {
+  margin-top: 1rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+}
+.form-status.success { color: var(--accent); background: var(--accent-soft); }
+.form-status.error { color: var(--error); background: var(--error-soft); }
 
 /* ==========================================================================
    FOOTER — identical on every page
