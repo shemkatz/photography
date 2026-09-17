@@ -298,7 +298,7 @@
   }
   .promo-card a.cta:hover { text-decoration: underline; }
 
-  /* ============================================================
+   /* ============================================================
      GALLERY (unchanged concept from v1 — CSS Grid with
      occasional wide/tall tiles for rhythm)
      ============================================================ */
@@ -335,7 +335,15 @@
   .photo:hover { opacity: 0.85; }
   .photo.wide { grid-column: span 2; }
   .photo.tall { grid-row: span 2; }
-
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .photo:has(img) {
+    padding: 0;
+  }
   /* ============================================================
      ABOUT
      ============================================================ */
@@ -561,7 +569,9 @@
       <div class="photo">image 3</div>
       <div class="photo wide">image 4 — wide</div>
       <div class="photo">image 5</div>
-      <div class="photo tall">image 6 — tall</div>
+      <div class="photo tall">
+        <img src="images/street/DSC00765.jpg" alt="Portrait Photo">
+      </div>
       <div class="photo">image 7</div>
       <div class="photo">image 8</div>
       <div class="photo wide">image 9 — wide</div>
