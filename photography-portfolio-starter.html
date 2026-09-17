@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shem Katz — Photography</title>
+
+<!-- These meta tags tie the page to your actual domain. The
+     canonical link tells search engines "this is the real
+     address for this page" (useful once you add www vs non-www
+     redirects). The og: tags control how the page looks when
+     someone pastes your link into iMessage, Slack, X, etc. —
+     without them, a shared link just shows a bare URL. -->
+<link rel="canonical" href="https://www.shemkatz.com/">
+<meta name="description" content="Shem Katz — photography portfolio.">
+<meta property="og:title" content="Shem Katz — Photography">
+<meta property="og:description" content="Photography portfolio of Shem Katz.">
+<meta property="og:url" content="https://www.shemkatz.com/">
+<meta property="og:type" content="website">
+
+<!--
+  ============================================================
+  PHOTOGRAPHY PORTFOLIO — V2 LEARNING TEMPLATE
+  ============================================================
+  This version borrows STRUCTURAL ideas from a working
+  professional photographer's site (not its content, text, or
+  images — those stay the original site's own):
+
+    1. A full-bleed hero image instead of a split hero.
+    2. A nav with a DROPDOWN submenu for photo categories
+       (e.g. "Work" -> Landscapes / Portraits / Black & White).
+    3. A row of "promo cards" below the hero — the kind of
+       thing a working photographer uses to point visitors at
+       coaching, print sales, or recent news.
+    4. A real contact FORM in the footer, not just a mailto link.
+
+  Everything else (tokens, comments, responsive rules) carries
+  over from your v1 template. Read the comments — they call out
+  what's new and why.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #f7f6f3;
+    --surface: #ffffff;
+    --text: #1a1a18;
+    --text-muted: #5c5a54;
+    --accent: #3d5c46;
+    --border: #dedad2;
+    --placeholder: #c9c4b8;
+
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "Inter", -apple-system, sans-serif;
+
+    --max-width: 1150px;
+    --gap: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14140f;
+      --surface: #1c1c16;
+      --text: #f2f0e8;
+      --text-muted: #a9a596;
+      --accent: #7fa383;
+      --border: #33322a;
+      --placeholder: #2b2a23;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14140f;
+    --surface: #1c1c16;
+    --text: #f2f0e8;
+    --text-muted: #a9a596;
+    --accent: #7fa383;
+    --border: #33322a;
+    --placeholder: #2b2a23;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ============================================================
+     HEADER / NAV WITH DROPDOWN
+     ============================================================
+     NEW in v2: the "Work" link now has a submenu, like the
+     reference site's PHOTOS menu with categories underneath.
+     This is done with plain CSS — no JavaScript needed — using
+     the ":hover" and ":focus-within" selectors to reveal a
+     hidden dropdown. ":focus-within" is what makes it usable
+     with a keyboard, not just a mouse.
+  ============================================================ */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  nav.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.1rem;
+    padding-bottom: 1.1rem;
+  }
+
+  .wordmark {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* The dropdown container needs "position: relative" so the
+     dropdown menu (which is "position: absolute") places itself
+     relative to THIS element, not the whole page. */
+  .has-dropdown {
+    position: relative;
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.5rem;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+
+    /* Hidden by default. Visibility (not display) is used so it
+       can transition smoothly and stays reachable by keyboard
+       until the moment it's shown. */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-4px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .has-dropdown:hover .dropdown,
+  .has-dropdown:focus-within .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .dropdown a {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .dropdown a:hover { background: var(--bg); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dropdown { transition: none; }
+  }
+
+  /* On small screens a hover dropdown is awkward, so it's
+     simplest to just show the categories as normal stacked
+     links instead of hiding them behind hover. */
+  @media (max-width: 700px) {
+    .nav-links { display: none; }
+  }
+
+  /* ============================================================
+     HERO — full-bleed image
+     ============================================================
+     NEW in v2: instead of a split text/photo hero, this is a
+     single full-width photo with the headline overlaid on top.
+     This is the classic photographer-portfolio hero because it
+     leads with the work itself.
+  ============================================================ */
+  .hero {
+    position: relative;
+    height: min(80vh, 640px);
+    background: var(--placeholder);
+    display: flex;
+    align-items: flex-end;
+    /* Replace this background with your own photo, e.g.:
+       background: url('your-hero-photo.jpg') center/cover; */
+  }
+
+  /* A gradient overlay keeps the headline readable no matter
+     what's in the photo behind it — a very common technique for
+     text-over-image heroes. */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0) 55%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 2.5rem 1.5rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    color: #fdfcf9; /* fixed light color: this text always sits on
+                        a darkened photo, regardless of light/dark
+                        mode, so it does NOT use the --text token */
+  }
+
+  .hero-content h1 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin: 0 0 0.5rem;
+  }
+
+  .hero-content p {
+    max-width: 42ch;
+    opacity: 0.9;
+  }
+
+  /* ============================================================
+     PROMO CARDS
+     ============================================================
+     NEW in v2: a row of cards pointing visitors toward specific
+     actions (book a session, browse prints, read latest news).
+     This is a pattern borrowed directly from the reference site,
+     which uses a similar row beneath its hero.
+  ============================================================ */
+  .promos {
+    padding: clamp(2rem, 5vw, 3.5rem) 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 800px) {
+    .promos { grid-template-columns: 1fr; }
+  }
+
+  .promo-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem;
+    background: var(--surface);
+  }
+
+  .promo-card h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .promo-card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin: 0 0 1rem;
+  }
+
+  .promo-card a.cta {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .promo-card a.cta:hover { text-decoration: underline; }
+
+  /* ============================================================
+     GALLERY (unchanged concept from v1 — CSS Grid with
+     occasional wide/tall tiles for rhythm)
+     ============================================================ */
+  .gallery-section { padding: clamp(1rem, 4vw, 2rem) 0 5rem; }
+
+  .section-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 180px;
+    grid-auto-flow: dense;
+    gap: 0.6rem;
+  }
+
+  @media (max-width: 700px) {
+    .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; }
+  }
+
+  .photo {
+    background: var(--placeholder);
+    border-radius: 2px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.6rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    transition: opacity 0.2s ease;
+  }
+  .photo:hover { opacity: 0.85; }
+  .photo.wide { grid-column: span 2; }
+  .photo.tall { grid-row: span 2; }
+
+  /* ============================================================
+     ABOUT
+     ============================================================ */
+  .about {
+    padding: 3rem 0 5rem;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: var(--gap);
+  }
+  @media (max-width: 800px) {
+    .about { grid-template-columns: 1fr; }
+  }
+
+  .about h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.8rem;
+    margin-top: 0;
+  }
+
+  .about-photo {
+    aspect-ratio: 1;
+    background: var(--placeholder);
+    border-radius: 2px;
+    max-width: 260px;
+  }
+
+  /* ============================================================
+     CONTACT — now a real form, plus social links
+     ============================================================
+     NEW in v2: the reference site has an actual contact form
+     rather than just a mailto link. This one is front-end only —
+     to make it actually SEND an email, you'd connect it to a
+     form backend like Formspree or Netlify Forms (a couple of
+     lines of setup, no server code needed on your end).
+  ============================================================ */
+  .contact-section {
+    border-top: 1px solid var(--border);
+    padding: clamp(2rem, 5vw, 4rem) 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+  }
+  @media (max-width: 800px) {
+    .contact-section { grid-template-columns: 1fr; }
+  }
+
+  .contact-section h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.8rem;
+    margin-top: 0;
+  }
+
+  form.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .contact-form label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: var(--surface);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+  }
+
+  .contact-form textarea { resize: vertical; min-height: 100px; }
+
+  .contact-form button {
+    align-self: flex-start;
+    padding: 0.7rem 1.6rem;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  .contact-form button:hover { opacity: 0.9; }
+
+  .contact-form input:focus-visible,
+  .contact-form textarea:focus-visible,
+  .contact-form button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+  }
+
+  footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  /* Simple circular icon buttons for social links, built with
+     just text initials so there's no dependency on an icon
+     library — swap for an <img> or SVG icon later if you like. */
+  .social-links a {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .social-links a:hover { border-color: var(--accent); color: var(--accent); }
+
+  .footer-meta {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV — "Work" now opens a dropdown of categories
+       ============================================================ -->
+  <header>
+    <nav class="container">
+      <div class="wordmark">Shem Katz</div>
+      <div class="nav-links">
+        <!-- ".has-dropdown" + a nested ".dropdown" is the whole
+             trick. Try removing "has-dropdown" from this div in
+             your own copy and see the hover menu disappear. -->
+        <div class="has-dropdown" tabindex="0">
+          Work
+          <div class="dropdown">
+            <a href="#work">Landscapes</a>
+            <a href="#work">Portraits</a>
+            <a href="#work">Black &amp; White</a>
+            <a href="#work">Travel</a>
+          </div>
+        </div>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       HERO — full-bleed photo with overlaid headline
+       ============================================================
+       Swap the inline "background" style below for your own
+       photo once you have one, e.g.:
+         style="background: url('hero.jpg') center/cover;"
+  ============================================================ -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Landscapes, quietly observed.</h1>
+      <p>I'm Shem, a landscape and nature photographer.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROMO CARDS
+       ============================================================ -->
+  <section class="container promos">
+    <div class="promo-card">
+      <h3>Book a session</h3>
+      <p>Portrait and location sessions available across the Pacific Northwest, spring through fall.</p>
+      <a class="cta" href="#contact">Get in touch →</a>
+    </div>
+    <div class="promo-card">
+      <h3>Prints</h3>
+      <p>Signed, limited-edition prints of select landscape work, shipped worldwide.</p>
+      <a class="cta" href="#">Visit shop →</a>
+    </div>
+    <div class="promo-card">
+      <h3>Latest journal entry</h3>
+      <p>Notes from a week shooting the Oregon coast at first light.</p>
+      <a class="cta" href="#">Read more →</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GALLERY
+       ============================================================ -->
+  <section class="container gallery-section" id="work">
+    <div class="section-label">Selected work</div>
+    <div class="gallery">
+      <div class="photo wide tall">image 1 — wide + tall</div>
+      <div class="photo">image 2</div>
+      <div class="photo">image 3</div>
+      <div class="photo wide">image 4 — wide</div>
+      <div class="photo">image 5</div>
+      <div class="photo tall">image 6 — tall</div>
+      <div class="photo">image 7</div>
+      <div class="photo">image 8</div>
+      <div class="photo wide">image 9 — wide</div>
+      <div class="photo">image 10</div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+       ============================================================ -->
+  <section class="container about" id="about">
+    <div class="about-photo"></div>
+    <div>
+      <h2>About</h2>
+      <p>
+        Write a few short paragraphs here: your background, what
+        drew you to photography, the kind of work you take on
+        (personal projects, commissions, prints for sale), and
+        anything that helps a potential client trust your eye.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT — real form + social icons
+       ============================================================ -->
+  <section class="container contact-section" id="contact">
+    <div>
+      <h2>Get in touch</h2>
+      <p style="color: var(--text-muted);">
+        For bookings, print inquiries, or just to say hello —
+        fill out the form and I'll usually reply within a couple
+        of days.
+      </p>
+    </div>
+    <!-- This form doesn't send anywhere yet. Point its "action"
+         at a service like Formspree (https://formspree.io) to
+         make it functional without writing any backend code:
+         <form action="https://formspree.io/f/yourFormId" method="POST"> -->
+    <form class="contact-form" onsubmit="return false;">
+      <div>
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+      </div>
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button type="submit">Send message</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-meta">© 2026 Shem Katz</div>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="YouTube">YT</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('nav a[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
