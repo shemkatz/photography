@@ -612,6 +612,28 @@ nav.container {
 
 .contact-narrow { max-width: 560px; margin: 0 auto; padding: 1rem 0 4rem; }
 
+.direct-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin: 1.25rem 0 0.6rem;
+}
+.contact-direct {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+.contact-direct a {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.contact-direct a:hover { color: var(--accent); }
+.contact-direct svg { flex-shrink: 0; }
+
 form.contact-form {
   display: flex;
   flex-direction: column;
