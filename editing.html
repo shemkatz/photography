@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Travel — Shem Katz</title>
-<link rel="canonical" href="https://www.shemkatz.com/work-travel.html">
-<meta name="description" content="Travel photography by Shem Katz.">
-<meta property="og:title" content="Travel — Shem Katz">
-<meta property="og:description" content="Travel photography by Shem Katz.">
-<meta property="og:url" content="https://www.shemkatz.com/work-travel.html">
+<title>Editing — Shem Katz</title>
+<link rel="canonical" href="https://www.shemkatz.com/editing.html">
+<meta name="description" content="Before-and-after photo editing examples by Shem Katz.">
+<meta property="og:title" content="Editing — Shem Katz">
+<meta property="og:description" content="Before-and-after photo editing examples by Shem Katz.">
+<meta property="og:url" content="https://www.shemkatz.com/editing.html">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,20 +27,20 @@
                 <a href="work-landscapes.html">Landscapes</a>
                 <a href="work-portraits.html">Portraits</a>
                 <a href="work-black-and-white.html">Black &amp; White</a>
-                <a href="work-travel.html" class="current">Travel</a>
+                <a href="work-travel.html">Travel</a>
               </div>
             </div>
           </div>
           <a href="about.html">About</a>
-          <a href="editing.html">Editing</a>
+          <a href="editing.html" class="current">Editing</a>
           <a href="contact.html">Contact</a>
         </div>
         <div class="has-dropdown lang-switch" tabindex="0" aria-label="Language">
           EN
           <div class="dropdown lang-dropdown">
             <div class="dropdown-panel">
-              <a href="work-travel.html" class="current" aria-current="true">English</a>
-              <a href="es/work-travel.html">Español</a>
+              <a href="editing.html" class="current" aria-current="true">English</a>
+              <a href="es/editing.html">Español</a>
             </div>
           </div>
         </div>
@@ -52,15 +52,15 @@
             <a href="work-landscapes.html">Landscapes</a>
             <a href="work-portraits.html">Portraits</a>
             <a href="work-black-and-white.html">Black &amp; White</a>
-            <a href="work-travel.html" class="current">Travel</a>
+            <a href="work-travel.html">Travel</a>
             <hr>
             <a href="about.html">About</a>
-            <a href="editing.html">Editing</a>
+            <a href="editing.html" class="current">Editing</a>
             <a href="contact.html">Contact</a>
             <hr>
             <div class="sub-label">Language</div>
-            <a href="work-travel.html" class="current" aria-current="true">English</a>
-            <a href="es/work-travel.html">Español</a>
+            <a href="editing.html" class="current" aria-current="true">English</a>
+            <a href="es/editing.html">Español</a>
           </div>
         </details>
       </div>
@@ -68,23 +68,43 @@
   </header>
   <main>
     <section class="page-header container">
-      <p class="eyebrow">Work / Travel</p>
-      <h1>Travel</h1>
-      <p>Places passed through, mostly on foot, mostly by accident.</p>
+      <p class="eyebrow">Editing</p>
+      <h1>Before &amp; After</h1>
+      <p>A look at how a photo changes from the moment it's captured to the finished edit. Drag the slider across each pair to compare.</p>
     </section>
-    <section class="container gallery-section">
-      <div class="section-label">Selected work &mdash; placeholders shown until more photos are added</div>
-      <div class="gallery">
-      <div class="photo wide tall"><img src="images/street/DSC00765.jpg" alt="Street scene, early morning"></div>
-      <div class="photo">Market stalls</div>
-      <div class="photo">Coastal town</div>
-      <div class="photo wide">Mountain pass</div>
-      <div class="photo">Local transit</div>
-      <div class="photo tall">Harbor at dusk</div>
-      <div class="photo">Rural roadside</div>
-      <div class="photo">City skyline, overcast</div>
+    <section class="container compare-section">
+      <!-- Comment out or duplicate this block per photo &mdash; swap the two .compare-img backgrounds for the real before/after frames, e.g. background: url('images/edit-01-before.jpg') center/cover; -->
+      <div class="compare-wrap">
+        <div class="compare" style="--pos:50%">
+          <div class="compare-media">
+            <div class="compare-img compare-before"></div>
+            <div class="compare-img compare-after"></div>
+            <div class="compare-divider"></div>
+          </div>
+          <input type="range" class="compare-range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+        </div>
+        <div class="compare-labels">
+          <span>Before</span>
+          <span>After</span>
+        </div>
+      </div>
+      <!-- Comment out or duplicate this block per photo &mdash; swap the two .compare-img backgrounds for the real before/after frames, e.g. background: url('images/edit-01-before.jpg') center/cover; -->
+      <div class="compare-wrap">
+        <div class="compare" style="--pos:50%">
+          <div class="compare-media">
+            <div class="compare-img compare-before"></div>
+            <div class="compare-img compare-after"></div>
+            <div class="compare-divider"></div>
+          </div>
+          <input type="range" class="compare-range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+        </div>
+        <div class="compare-labels">
+          <span>Before</span>
+          <span>After</span>
+        </div>
       </div>
     </section>
+    <script src="compare-slider.js" defer></script>
   </main>
   <footer>
     <div class="container">

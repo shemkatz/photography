@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diario — Shem Katz</title>
-<link rel="canonical" href="https://www.shemkatz.com/es/journal.html">
-<meta name="description" content="Diario — próximamente.">
-<meta property="og:title" content="Diario — Shem Katz">
-<meta property="og:description" content="Diario — próximamente.">
-<meta property="og:url" content="https://www.shemkatz.com/es/journal.html">
+<title>Edición — Shem Katz</title>
+<link rel="canonical" href="https://www.shemkatz.com/es/editing.html">
+<meta name="description" content="Ejemplos de antes y después de edición fotográfica por Shem Katz.">
+<meta property="og:title" content="Edición — Shem Katz">
+<meta property="og:description" content="Ejemplos de antes y después de edición fotográfica por Shem Katz.">
+<meta property="og:url" content="https://www.shemkatz.com/es/editing.html">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -32,15 +32,15 @@
             </div>
           </div>
           <a href="about.html">Sobre mí</a>
-          <a href="editing.html">Edición</a>
+          <a href="editing.html" class="current">Edición</a>
           <a href="contact.html">Contacto</a>
         </div>
         <div class="has-dropdown lang-switch" tabindex="0" aria-label="Idioma">
           ES
           <div class="dropdown lang-dropdown">
             <div class="dropdown-panel">
-              <a href="journal.html" class="current" aria-current="true">Español</a>
-              <a href="../journal.html">English</a>
+              <a href="editing.html" class="current" aria-current="true">Español</a>
+              <a href="../editing.html">English</a>
             </div>
           </div>
         </div>
@@ -55,25 +55,56 @@
             <a href="work-travel.html">Viajes</a>
             <hr>
             <a href="about.html">Sobre mí</a>
-            <a href="editing.html">Edición</a>
+            <a href="editing.html" class="current">Edición</a>
             <a href="contact.html">Contacto</a>
             <hr>
             <div class="sub-label">Idioma</div>
-            <a href="journal.html" class="current" aria-current="true">Español</a>
-            <a href="../journal.html">English</a>
+            <a href="editing.html" class="current" aria-current="true">Español</a>
+            <a href="../editing.html">English</a>
           </div>
         </details>
       </div>
     </nav>
   </header>
   <main>
-    <section class="container coming-soon">
-      <span class="status">Próximamente</span>
-      <h1>Diario</h1>
-      <p>Notas e historias desde el terreno &mdash; mañanas en la costa, notas de equipo, y algún reporte de viaje ocasional.</p>
-      <a class="back" href="contact.html">Ponte en contacto mientras tanto &rarr;</a>
-      <p style="margin-top:2rem;"><a class="back" href="index.html">&larr; Volver al inicio</a></p>
+    <section class="page-header container">
+      <p class="eyebrow">Edición</p>
+      <h1>Antes y Después</h1>
+      <p>Un vistazo a cómo cambia una foto desde el momento en que se captura hasta la edición final. Arrastra el control deslizante sobre cada par para comparar.</p>
     </section>
+    <section class="container compare-section">
+      <!-- Comenta o duplica este bloque por foto &mdash; reemplaza los dos fondos .compare-img por los cuadros reales de antes/después, p. ej. background: url('../images/edit-01-before.jpg') center/cover; -->
+      <div class="compare-wrap">
+        <div class="compare" style="--pos:50%">
+          <div class="compare-media">
+            <div class="compare-img compare-before"></div>
+            <div class="compare-img compare-after"></div>
+            <div class="compare-divider"></div>
+          </div>
+          <input type="range" class="compare-range" min="0" max="100" value="50" aria-label="Arrastra para comparar el antes y el después">
+        </div>
+        <div class="compare-labels">
+          <span>Antes</span>
+          <span>Después</span>
+        </div>
+      </div>
+      <!-- Comenta o duplica este bloque por foto &mdash; reemplaza los dos fondos .compare-img por los cuadros reales de antes/después, p. ej. background: url('../images/edit-01-before.jpg') center/cover; -->
+      <div class="compare-wrap">
+        <div class="compare" style="--pos:50%">
+          <div class="compare-media">
+            <div class="compare-img compare-before"></div>
+            <div class="compare-img compare-after"></div>
+            <div class="compare-divider"></div>
+          </div>
+          <input type="range" class="compare-range" min="0" max="100" value="50" aria-label="Arrastra para comparar el antes y el después">
+        </div>
+        <div class="compare-labels">
+          <span>Antes</span>
+          <span>Después</span>
+        </div>
+      </div>
+    </section>
+    <script src="../compare-slider.js" defer></script>
   </main>
   <footer>
     <div class="container">
