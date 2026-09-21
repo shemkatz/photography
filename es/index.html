@@ -24,11 +24,9 @@
             Trabajo
             <div class="dropdown">
               <div class="dropdown-panel">
-                <a href="work-landscapes.html">Paisajes</a>
-                <a href="work-portraits.html">Retratos</a>
-                <a href="work-black-and-white.html">Blanco y Negro</a>
-                <a href="work-travel.html">Viajes</a>
+                <a href="work-land.html">Tierra</a>
                 <a href="work-underwater.html">Bajo el agua</a>
+                <a href="work-commercial.html">Comercial</a>
               </div>
             </div>
           </div>
@@ -50,11 +48,9 @@
           <div class="mobile-panel">
             <a href="index.html" class="current">Inicio</a>
             <div class="sub-label">Trabajo</div>
-            <a href="work-landscapes.html">Paisajes</a>
-            <a href="work-portraits.html">Retratos</a>
-            <a href="work-black-and-white.html">Blanco y Negro</a>
-            <a href="work-travel.html">Viajes</a>
+            <a href="work-land.html">Tierra</a>
             <a href="work-underwater.html">Bajo el agua</a>
+            <a href="work-commercial.html">Comercial</a>
             <hr>
             <a href="about.html">Sobre mí</a>
             <a href="editing.html">Edición</a>
@@ -75,7 +71,7 @@
          .hero-slide:nth-child(n)). Para agregar otra, añade aquí otro
          .hero-slide y dale un background allá.
     ============================================================ -->
-    <section class="hero">
+    <section class="hero" data-prev-label="Foto anterior" data-next-label="Foto siguiente">
       <div class="hero-slide" data-label="Tiburón gata"></div>
       <div class="hero-slide" data-label="Tortuga verde, buceo nocturno"></div>
       <div class="hero-content">
@@ -104,8 +100,8 @@
       <div class="featured-text">
         <p class="eyebrow">Cuadro reciente</p>
         <h2>Retrato en el camino</h2>
-        <p>Una foto del trabajo de viajes, tal como fue tomada &mdash; vertical y sin recortar. La serie completa está en la página Viajes.</p>
-        <a class="cta" href="work-travel.html">Ver el trabajo de viajes &rarr;</a>
+        <p>Una foto del trabajo de viajes, tal como fue tomada &mdash; vertical y sin recortar. La serie completa está en la página Tierra.</p>
+        <a class="cta" href="work-land.html">Ver el trabajo en tierra &rarr;</a>
       </div>
       <figure class="featured-photo">
         <img src="../images/street/DSC00765-web.jpg" alt="Una niña con sombrero de ala ancha y botas vaqueras de pie en un patio soleado" width="1333" height="2000" loading="lazy">
@@ -161,5 +157,6 @@
       </div>
     </div>
   </footer>
+  <script src="../hero-slides.js" defer></script>
 </body>
 </html>
