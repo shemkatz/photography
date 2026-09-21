@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=10">
+<link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body>
   <header>
@@ -28,6 +28,7 @@
                 <a href="work-portraits.html">Portraits</a>
                 <a href="work-black-and-white.html">Black &amp; White</a>
                 <a href="work-travel.html">Travel</a>
+                <a href="work-underwater.html">Underwater</a>
               </div>
             </div>
           </div>
@@ -53,6 +54,7 @@
             <a href="work-portraits.html">Portraits</a>
             <a href="work-black-and-white.html">Black &amp; White</a>
             <a href="work-travel.html">Travel</a>
+            <a href="work-underwater.html">Underwater</a>
             <hr>
             <a href="about.html">About</a>
             <a href="editing.html">Editing</a>
@@ -68,16 +70,14 @@
   </header>
   <main>
     <!-- ============================================================
-         HERO — rotating photo placeholders, pure CSS crossfade
-         Swap each .hero-slide's background in styles.css for a real
-         photo once you have one, e.g.
-           background: url('images/oregon-coast.jpg') center/cover;
+         HERO — rotating photos, pure CSS crossfade
+         Each .hero-slide gets its photo from styles.css (see the
+         .hero-slide:nth-child(n) rules). To add another, drop in one
+         more .hero-slide here and give it a background there.
     ============================================================ -->
     <section class="hero">
-      <div class="hero-slide" data-label="Oregon Coast"></div>
-      <div class="hero-slide" data-label="Columbia River Gorge"></div>
-      <div class="hero-slide" data-label="Olympic Peninsula"></div>
-      <div class="hero-slide" data-label="Cascade Range"></div>
+      <div class="hero-slide" data-label="Nurse shark"></div>
+      <div class="hero-slide" data-label="Green turtle, night dive"></div>
       <div class="hero-content">
         <h1>Landscapes, quietly observed.</h1>
         <p>I'm Shem, a landscape and nature photographer working across the Pacific Northwest.</p>
@@ -88,12 +88,28 @@
          ABOUT TEASER
     ============================================================ -->
     <section class="container about-teaser">
-      <div class="about-photo"></div>
+      <div class="about-photo"><img src="images/self_portrait-web.jpg" alt="Portrait of Shem Katz" width="1245" height="1400" loading="lazy"></div>
       <div>
         <h2>About</h2>
         <p>I spend most mornings chasing fog off the coast and most evenings editing what I found. This site is a work in progress &mdash; the fuller story, and more of the work, lives on the About page.</p>
         <a class="cta" href="about.html">More about me &rarr;</a>
       </div>
+    </section>
+
+    <!-- ============================================================
+         FEATURED FRAME — one photo shown at its own aspect ratio,
+         so portrait frames are not cropped into the layout.
+    ============================================================ -->
+    <section class="container featured">
+      <div class="featured-text">
+        <p class="eyebrow">Recent frame</p>
+        <h2>Portrait from the road</h2>
+        <p>One frame from the travel work, shown the way it was shot &mdash; upright, and uncropped. The rest of the set is on the Travel page.</p>
+        <a class="cta" href="work-travel.html">See the travel work &rarr;</a>
+      </div>
+      <figure class="featured-photo">
+        <img src="images/street/DSC00765-web.jpg" alt="A girl in a wide-brimmed hat and cowboy boots standing in a sunlit yard" width="1333" height="2000" loading="lazy">
+      </figure>
     </section>
 
     <!-- ============================================================

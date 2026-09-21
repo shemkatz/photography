@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=10">
+<link rel="stylesheet" href="../styles.css?v=11">
 </head>
 <body>
   <header>
@@ -28,6 +28,7 @@
                 <a href="work-portraits.html">Retratos</a>
                 <a href="work-black-and-white.html">Blanco y Negro</a>
                 <a href="work-travel.html">Viajes</a>
+                <a href="work-underwater.html">Bajo el agua</a>
               </div>
             </div>
           </div>
@@ -53,6 +54,7 @@
             <a href="work-portraits.html">Retratos</a>
             <a href="work-black-and-white.html">Blanco y Negro</a>
             <a href="work-travel.html">Viajes</a>
+            <a href="work-underwater.html">Bajo el agua</a>
             <hr>
             <a href="about.html">Sobre mí</a>
             <a href="editing.html">Edición</a>
@@ -68,16 +70,14 @@
   </header>
   <main>
     <!-- ============================================================
-         HERO — rotating photo placeholders, pure CSS crossfade
-         Swap each .hero-slide's background in styles.css for a real
-         photo once you have one, e.g.
-           background: url('images/oregon-coast.jpg') center/cover;
+         HERO — fotos en rotación, crossfade puro en CSS
+         Cada .hero-slide toma su foto desde styles.css (ver las reglas
+         .hero-slide:nth-child(n)). Para agregar otra, añade aquí otro
+         .hero-slide y dale un background allá.
     ============================================================ -->
     <section class="hero">
-      <div class="hero-slide" data-label="Costa de Oregón"></div>
-      <div class="hero-slide" data-label="Garganta del Río Columbia"></div>
-      <div class="hero-slide" data-label="Península Olímpica"></div>
-      <div class="hero-slide" data-label="Cordillera de las Cascadas"></div>
+      <div class="hero-slide" data-label="Tiburón gata"></div>
+      <div class="hero-slide" data-label="Tortuga verde, buceo nocturno"></div>
       <div class="hero-content">
         <h1>Paisajes, observados en silencio.</h1>
         <p>Soy Shem, fotógrafo de paisaje y naturaleza que trabaja en todo el Pacífico Noroeste.</p>
@@ -88,12 +88,28 @@
          ABOUT TEASER
     ============================================================ -->
     <section class="container about-teaser">
-      <div class="about-photo"></div>
+      <div class="about-photo"><img src="../images/self_portrait-web.jpg" alt="Retrato de Shem Katz" width="1245" height="1400" loading="lazy"></div>
       <div>
         <h2>Sobre mí</h2>
         <p>Paso la mayoría de las mañanas persiguiendo la niebla en la costa y la mayoría de las tardes editando lo que encontré. Este sitio está en construcción &mdash; la historia completa, y más de mi trabajo, está en la página Sobre mí.</p>
         <a class="cta" href="about.html">Más sobre mí &rarr;</a>
       </div>
+    </section>
+
+    <!-- ============================================================
+         CUADRO DESTACADO — una foto mostrada en su propia proporción,
+         para que los formatos verticales no se recorten en el diseño.
+    ============================================================ -->
+    <section class="container featured">
+      <div class="featured-text">
+        <p class="eyebrow">Cuadro reciente</p>
+        <h2>Retrato en el camino</h2>
+        <p>Una foto del trabajo de viajes, tal como fue tomada &mdash; vertical y sin recortar. La serie completa está en la página Viajes.</p>
+        <a class="cta" href="work-travel.html">Ver el trabajo de viajes &rarr;</a>
+      </div>
+      <figure class="featured-photo">
+        <img src="../images/street/DSC00765-web.jpg" alt="Una niña con sombrero de ala ancha y botas vaqueras de pie en un patio soleado" width="1333" height="2000" loading="lazy">
+      </figure>
     </section>
 
     <!-- ============================================================
