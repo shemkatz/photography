@@ -383,7 +383,8 @@ nav.container {
   backdrop-filter: blur(6px);
   color: #fdfcf9;
   cursor: pointer;
-  opacity: 0;
+  /* Visible at rest so they are discoverable, brighter on hover/focus. */
+  opacity: 0.55;
   transition: opacity 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 .hero-arrow--prev { left: clamp(0.75rem, 2vw, 1.75rem); }
