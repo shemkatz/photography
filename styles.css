@@ -318,9 +318,10 @@ nav.container {
    HERO — full-bleed, rotating photos
    One .hero-slide per photo, set below with
      background-image: url('images/underwater/PB300088-web.jpg');
-   Slides fade in sequence; if you add or remove one, update the
-   animation-delay spacing so the delays divide the 12s cycle evenly
-   (2 slides -> 0s / 6s, 3 slides -> 0s / 4s / 8s, and so on).
+   Slides fade in sequence, 6s each. Adding or removing one means three
+   edits: a .hero-slide in the HTML, an :nth-child rule below with its own
+   delay 6s after the last, and the heroFade cycle length (slides x 6s)
+   plus its hold keyframe (100 / number of slides).
    The crossfade is pure CSS (see @keyframes heroFade below) so it needs
    no JavaScript — it keeps rotating even if scripts are blocked.
    ========================================================================== */
@@ -342,7 +343,11 @@ nav.container {
   inset: 0;
   background: var(--placeholder) center/cover;
   opacity: 0;
-  animation: heroFade 12s infinite;
+  animation: heroFade 18s infinite;
+  /* Linear, not the default ease: the outgoing and incoming opacities then
+     add up to 1 all the way through the crossfade, so the hero never dips
+     dark between photos. */
+  animation-timing-function: linear;
 }
 .hero-slide::after {
   content: attr(data-label);
@@ -356,10 +361,14 @@ nav.container {
 }
 .hero-slide:nth-child(1) {
   animation-delay: 0s;
-  background-image: url('images/underwater/PB300088-web.jpg');
+  background-image: url('images/underwater/PB090107-web.jpg');
 }
 .hero-slide:nth-child(2) {
   animation-delay: 6s;
+  background-image: url('images/underwater/PB300088-web.jpg');
+}
+.hero-slide:nth-child(3) {
+  animation-delay: 12s;
   background-image: url('images/underwater/PC050119-web.jpg');
   /* The turtle sits high in the frame. 18% down the overflow puts its head
      and fins near the top of the hero while leaving the reef below it in
@@ -410,7 +419,7 @@ nav.container {
 .hero.is-manual .hero-slide {
   animation: none;
   opacity: 0;
-  transition: opacity 0.7s ease;
+  transition: opacity 0.7s linear;   /* same reason as above */
 }
 .hero.is-manual .hero-slide.is-active { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
@@ -418,11 +427,11 @@ nav.container {
 }
 
 @keyframes heroFade {
-  0%    { opacity: 0; }
-  6%    { opacity: 1; }
-  44%   { opacity: 1; }
-  56%   { opacity: 0; }
-  100%  { opacity: 0; }
+  0%     { opacity: 0; }
+  8%     { opacity: 1; }
+  33.33% { opacity: 1; }   /* hold until the next slide is due (100 / 3) */
+  41.33% { opacity: 0; }   /* falls exactly as the next one rises: no dip */
+  100%   { opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -435,7 +444,9 @@ nav.container {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0) 55%);
+  /* Deep enough to keep the headline legible over the bright over-under
+     frame, where the text falls on sunlit coral rather than dark water. */
+  background: linear-gradient(to top, rgba(0,0,0,0.68), rgba(0,0,0,0) 62%);
 }
 
 .hero-content {
