@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=12">
+<link rel="stylesheet" href="../styles.css?v=15">
 </head>
 <body>
   <header>
@@ -71,30 +71,18 @@
       <p>Un vistazo a cómo cambia una foto desde el momento en que se captura hasta la edición final. Arrastra el control deslizante sobre cada par para comparar.</p>
     </section>
     <section class="container compare-section">
-      <!-- Comenta o duplica este bloque por foto &mdash; reemplaza los dos fondos .compare-img por los cuadros reales de antes/después, p. ej. background: url('../images/edit-01-before.jpg') center/cover; -->
+      <!-- Un bloque por cada par antes/después. Para agregar otro, duplica
+           este bloque, dale una nueva clase de par (edit-02, edit-03 …) y
+           apunta esa clase a sus dos fotos en styles.css. --ratio ajusta el
+           par a la forma de la foto. -->
       <div class="compare-wrap">
-        <div class="compare" style="--pos:50%">
+        <div class="compare edit-01" style="--pos:50%; --ratio: 4 / 3">
           <div class="compare-media">
             <div class="compare-img compare-before"></div>
             <div class="compare-img compare-after"></div>
             <div class="compare-divider"></div>
           </div>
-          <input type="range" class="compare-range" min="0" max="100" value="50" aria-label="Arrastra para comparar el antes y el después">
-        </div>
-        <div class="compare-labels">
-          <span>Antes</span>
-          <span>Después</span>
-        </div>
-      </div>
-      <!-- Comenta o duplica este bloque por foto &mdash; reemplaza los dos fondos .compare-img por los cuadros reales de antes/después, p. ej. background: url('../images/edit-01-before.jpg') center/cover; -->
-      <div class="compare-wrap">
-        <div class="compare" style="--pos:50%">
-          <div class="compare-media">
-            <div class="compare-img compare-before"></div>
-            <div class="compare-img compare-after"></div>
-            <div class="compare-divider"></div>
-          </div>
-          <input type="range" class="compare-range" min="0" max="100" value="50" aria-label="Arrastra para comparar el antes y el después">
+          <input type="range" class="compare-range" min="0" max="100" value="50" aria-label="Arrastra para comparar antes y después">
         </div>
         <div class="compare-labels">
           <span>Antes</span>
@@ -102,7 +90,7 @@
         </div>
       </div>
     </section>
-    <script src="../compare-slider.js" defer></script>
+    <script src="../compare-slider.js?v=2" defer></script>
   </main>
   <footer>
     <div class="container">

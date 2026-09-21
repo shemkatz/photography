@@ -326,7 +326,12 @@ nav.container {
    ========================================================================== */
 .hero {
   position: relative;
-  height: min(78vh, 620px);
+  /* The photos are 4:3, so a short hero on a wide window crops away most of
+     the frame — `cover` can only show a band as tall as the hero itself.
+     Growing the height with the window (52vw) keeps far more of each photo
+     in view; the 82vh and 820px caps stop it swallowing the screen, and the
+     440px floor keeps it a hero rather than a strip on narrow windows. */
+  height: clamp(440px, min(52vw, 82vh), 820px);
   overflow: hidden;
   display: flex;
   align-items: flex-end;
@@ -356,10 +361,11 @@ nav.container {
 .hero-slide:nth-child(2) {
   animation-delay: 6s;
   background-image: url('images/underwater/PC050119-web.jpg');
-  /* The turtle sits in the top quarter of the frame, so anchor the crop to
-     the top edge instead of the centre — on a wide screen the hero is far
-     wider than 4:3 and a centred crop cuts the head off. Adjust per photo. */
-  background-position: center top;
+  /* The turtle sits high in the frame. 18% down the overflow puts its head
+     and fins near the top of the hero while leaving the reef below it in
+     shot — closer to the top than centre, without pinning it to the edge.
+     Adjust this one number per photo. */
+  background-position: center 18%;
 }
 
 /* Manual control — hero-slides.js adds the arrows and, once one is used,
@@ -578,7 +584,9 @@ nav.container {
 .compare-wrap { max-width: 640px; margin: 0 auto; width: 100%; }
 .compare {
   position: relative;
-  aspect-ratio: 3 / 2;
+  /* --ratio lets each pair match its own frame, so nothing is cropped;
+     3/2 stays the default for pairs that don't set one. */
+  aspect-ratio: var(--ratio, 3 / 2);
   border-radius: 4px;
   overflow: hidden;
   background: var(--placeholder);
@@ -594,8 +602,16 @@ nav.container {
 .compare-before { background-color: var(--placeholder); }
 .compare-after {
   background-color: var(--placeholder-alt);
-  clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0);
+  /* Clipped from the left edge to the handle, so the edited frame sits on
+     the right of the divider and the unedited one on the left — the order
+     the Before / After labels underneath promise. */
+  clip-path: inset(0 0 0 var(--pos, 50%));
 }
+
+/* Each before/after pair names its two frames here. The paths resolve from
+   this stylesheet, so the same rule serves the English and Spanish pages. */
+.edit-01 .compare-before { background-image: url('images/edits/unedited-2020077-web.jpg'); }
+.edit-01 .compare-after  { background-image: url('images/edits/edited-2020077-web.jpg'); }
 .compare-img::after {
   content: attr(data-label);
   position: absolute;

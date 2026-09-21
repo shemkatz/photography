@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=12">
+<link rel="stylesheet" href="styles.css?v=15">
 </head>
 <body>
   <header>
@@ -71,24 +71,12 @@
       <p>A look at how a photo changes from the moment it's captured to the finished edit. Drag the slider across each pair to compare.</p>
     </section>
     <section class="container compare-section">
-      <!-- Comment out or duplicate this block per photo &mdash; swap the two .compare-img backgrounds for the real before/after frames, e.g. background: url('images/edit-01-before.jpg') center/cover; -->
+      <!-- One block per before/after pair. To add another, duplicate this
+           block, give it a new pair class (edit-02, edit-03 …) and point that
+           class at its two frames in styles.css. --ratio matches the pair to
+           the shape of the photo. -->
       <div class="compare-wrap">
-        <div class="compare" style="--pos:50%">
-          <div class="compare-media">
-            <div class="compare-img compare-before"></div>
-            <div class="compare-img compare-after"></div>
-            <div class="compare-divider"></div>
-          </div>
-          <input type="range" class="compare-range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
-        </div>
-        <div class="compare-labels">
-          <span>Before</span>
-          <span>After</span>
-        </div>
-      </div>
-      <!-- Comment out or duplicate this block per photo &mdash; swap the two .compare-img backgrounds for the real before/after frames, e.g. background: url('images/edit-01-before.jpg') center/cover; -->
-      <div class="compare-wrap">
-        <div class="compare" style="--pos:50%">
+        <div class="compare edit-01" style="--pos:50%; --ratio: 4 / 3">
           <div class="compare-media">
             <div class="compare-img compare-before"></div>
             <div class="compare-img compare-after"></div>
@@ -102,7 +90,7 @@
         </div>
       </div>
     </section>
-    <script src="compare-slider.js" defer></script>
+    <script src="compare-slider.js?v=2" defer></script>
   </main>
   <footer>
     <div class="container">
