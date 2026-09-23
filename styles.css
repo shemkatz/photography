@@ -321,7 +321,8 @@ nav.container {
    Slides fade in sequence, 6s each. Adding or removing one means three
    edits: a .hero-slide in the HTML, an :nth-child rule below with its own
    delay 6s after the last, and the heroFade cycle length (slides x 6s)
-   plus its hold keyframe (100 / number of slides).
+   plus its hold keyframe (100 / number of slides) and the fade-out 8 points
+   after that.
    The crossfade is pure CSS (see @keyframes heroFade below) so it needs
    no JavaScript — it keeps rotating even if scripts are blocked.
    ========================================================================== */
@@ -343,7 +344,7 @@ nav.container {
   inset: 0;
   background: var(--placeholder) center/cover;
   opacity: 0;
-  animation: heroFade 18s infinite;
+  animation: heroFade 24s infinite;
   /* Linear, not the default ease: the outgoing and incoming opacities then
      add up to 1 all the way through the crossfade, so the hero never dips
      dark between photos. */
@@ -366,6 +367,14 @@ nav.container {
 .hero-slide:nth-child(2) {
   animation-delay: 6s;
   background-image: url('images/underwater/PB300088-web.jpg');
+}
+.hero-slide:nth-child(4) {
+  animation-delay: 18s;
+  background-image: url('images/street/edited-00726-web.jpg');
+  /* A 3:2 frame in a much wider band loses roughly a quarter of its height.
+     Sitting the crop above centre keeps headroom over the subject and spends
+     the loss on the empty floor instead. */
+  background-position: center 30%;
 }
 .hero-slide:nth-child(3) {
   animation-delay: 12s;
@@ -427,11 +436,11 @@ nav.container {
 }
 
 @keyframes heroFade {
-  0%     { opacity: 0; }
-  8%     { opacity: 1; }
-  33.33% { opacity: 1; }   /* hold until the next slide is due (100 / 3) */
-  41.33% { opacity: 0; }   /* falls exactly as the next one rises: no dip */
-  100%   { opacity: 0; }
+  0%    { opacity: 0; }
+  8%    { opacity: 1; }
+  25%   { opacity: 1; }   /* hold until the next slide is due (100 / 4) */
+  33%   { opacity: 0; }   /* falls exactly as the next one rises: no dip */
+  100%  { opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
