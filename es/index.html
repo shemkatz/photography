@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=18">
+<link rel="stylesheet" href="../styles.css?v=19">
 </head>
 <body>
   <header>
@@ -71,7 +71,7 @@
          .hero-slide:nth-child(n)). Para agregar otra, añade aquí otro
          .hero-slide y dale un background allá.
     ============================================================ -->
-    <section class="hero" data-prev-label="Foto anterior" data-next-label="Foto siguiente">
+    <section class="hero" data-slideshow data-slide-class="hero-slide" data-prev-label="Foto anterior" data-next-label="Foto siguiente">
       <div class="hero-slide" data-label="Costa y arrecife, mitad y mitad"></div>
       <div class="hero-slide" data-label="Tiburón gata"></div>
       <div class="hero-slide" data-label="Tortuga verde, buceo nocturno"></div>
@@ -99,13 +99,15 @@
     ============================================================ -->
     <section class="container featured">
       <div class="featured-text">
-        <p class="eyebrow">Cuadro reciente</p>
-        <h2>Retrato en el camino</h2>
-        <p>Una foto del trabajo de viajes, tal como fue tomada &mdash; vertical y sin recortar. La serie completa está en la página Tierra.</p>
+        <p class="eyebrow">Cuadros recientes</p>
+        <h2>En vertical</h2>
+        <p>Dos retratos del trabajo, en vertical en lugar de recortados en una franja. Usa las flechas para cambiar; la serie completa está en la página Tierra.</p>
         <a class="cta" href="work-land.html">Ver el trabajo en tierra &rarr;</a>
       </div>
-      <figure class="featured-photo">
-        <img src="../images/street/DSC00765-web.jpg" alt="Una niña con sombrero de ala ancha y botas vaqueras de pie en un patio soleado" width="1333" height="2000" loading="lazy">
+      <figure class="featured-photo" data-slideshow data-slide-class="featured-slide"
+              data-prev-label="Foto anterior" data-next-label="Foto siguiente">
+        <img class="featured-slide" src="../images/street/edited-7160267-web.jpg" alt="Retrato mitad y mitad al atardecer: una mujer de pie con el agua al pecho, su cuerpo visible bajo la superficie" width="1500" height="2000" loading="lazy">
+        <img class="featured-slide" src="../images/street/DSC00765-web.jpg" alt="Una niña con sombrero de ala ancha y botas vaqueras de pie en un patio soleado" width="1333" height="2000" loading="lazy">
       </figure>
     </section>
 
@@ -158,6 +160,6 @@
       </div>
     </div>
   </footer>
-  <script src="../hero-slides.js?v=2" defer></script>
+  <script src="../hero-slides.js?v=3" defer></script>
 </body>
 </html>

@@ -381,7 +381,7 @@ nav.container {
    puts .is-manual on the hero: the CSS rotation stops and the script
    crossfades between slides instead. Without JavaScript none of this
    exists and the animation below just keeps running. */
-.hero-arrow {
+.slide-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -413,7 +413,7 @@ nav.container {
 }
 /* No hover on touch screens, so leave them showing there. */
 @media (hover: none) {
-  .hero-arrow { opacity: 1; }
+  .slide-arrow { opacity: 1; }
 }
 
 .hero.is-manual .hero-slide {
@@ -716,18 +716,66 @@ nav.container {
   align-items: center;
 }
 .featured-text { grid-column: 1; grid-row: 1; max-width: 44ch; }
-.featured-photo { grid-column: 2; grid-row: 1; margin: 0; }
+.featured-photo {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  /* The two frames are 2:3 and 3:4. Stacking them for a crossfade needs one
+     fixed shape, and 2:3 is the safer choice: it trims a little from the
+     sides of the wider frame rather than cropping the taller one's top and
+     bottom, where the subjects sit closer to the edge. */
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: 3px;
+}
 @media (max-width: 760px) {
   .featured { grid-template-columns: 1fr; }
   .featured-text, .featured-photo { grid-column: 1; grid-row: auto; }
   .featured-photo { max-width: 380px; }
 }
-.featured-photo img {
+.featured-slide {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
-  border-radius: 3px;
+  height: 100%;
+  object-fit: cover;
   display: block;
+  opacity: 0;
+  animation: featuredFade 12s infinite;
+  animation-timing-function: linear;   /* so the crossfade never dips */
 }
+.featured-slide:nth-child(1) { animation-delay: 0s; }
+.featured-slide:nth-child(2) { animation-delay: 6s; }
+
+/* Two slides, 6s each: each fade-out lines up exactly with the next fade-in. */
+@keyframes featuredFade {
+  0%    { opacity: 0; }
+  8%    { opacity: 1; }
+  50%   { opacity: 1; }
+  58%   { opacity: 0; }
+  100%  { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .featured-slide { animation: none; opacity: 0; }
+  .featured-slide:nth-child(1) { opacity: 1; }
+}
+
+.featured-photo.is-manual .featured-slide {
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.7s linear;
+}
+.featured-photo.is-manual .featured-slide.is-active { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .featured-photo.is-manual .featured-slide { transition: none; }
+}
+
+/* Smaller arrows here than on the full-bleed hero. */
+.featured-photo .slide-arrow { width: 34px; height: 34px; }
+.featured-photo .slide-arrow svg { width: 15px; height: 15px; }
+.featured-photo .slide-arrow--prev { left: 0.6rem; }
+.featured-photo .slide-arrow--next { right: 0.6rem; }
 .featured .eyebrow {
   font-size: 0.8rem;
   letter-spacing: 0.08em;

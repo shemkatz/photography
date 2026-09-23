@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=18">
+<link rel="stylesheet" href="styles.css?v=19">
 </head>
 <body>
   <header>
@@ -71,7 +71,7 @@
          .hero-slide:nth-child(n) rules). To add another, drop in one
          more .hero-slide here and give it a background there.
     ============================================================ -->
-    <section class="hero" data-prev-label="Previous photo" data-next-label="Next photo">
+    <section class="hero" data-slideshow data-slide-class="hero-slide" data-prev-label="Previous photo" data-next-label="Next photo">
       <div class="hero-slide" data-label="Shoreline and reef, over-under"></div>
       <div class="hero-slide" data-label="Nurse shark"></div>
       <div class="hero-slide" data-label="Green turtle, night dive"></div>
@@ -99,13 +99,15 @@
     ============================================================ -->
     <section class="container featured">
       <div class="featured-text">
-        <p class="eyebrow">Recent frame</p>
-        <h2>Portrait from the road</h2>
-        <p>One frame from the travel work, shown the way it was shot &mdash; upright, and uncropped. The rest of the set is on the Land page.</p>
+        <p class="eyebrow">Recent frames</p>
+        <h2>Shown upright</h2>
+        <p>Two portraits from the work, kept upright instead of cropped into a band. Use the arrows to switch between them; the rest of the set is on the Land page.</p>
         <a class="cta" href="work-land.html">See the work on land &rarr;</a>
       </div>
-      <figure class="featured-photo">
-        <img src="images/street/DSC00765-web.jpg" alt="A girl in a wide-brimmed hat and cowboy boots standing in a sunlit yard" width="1333" height="2000" loading="lazy">
+      <figure class="featured-photo" data-slideshow data-slide-class="featured-slide"
+              data-prev-label="Previous photo" data-next-label="Next photo">
+        <img class="featured-slide" src="images/street/edited-7160267-web.jpg" alt="Over-under portrait at dusk: a woman standing chest-deep in calm shallow water, her lower body visible beneath the surface" width="1500" height="2000" loading="lazy">
+        <img class="featured-slide" src="images/street/DSC00765-web.jpg" alt="A girl in a wide-brimmed hat and cowboy boots standing in a sunlit yard" width="1333" height="2000" loading="lazy">
       </figure>
     </section>
 
@@ -158,6 +160,6 @@
       </div>
     </div>
   </footer>
-  <script src="hero-slides.js?v=2" defer></script>
+  <script src="hero-slides.js?v=3" defer></script>
 </body>
 </html>
