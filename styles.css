@@ -411,12 +411,12 @@ nav.container {
   opacity: 0.55;
   transition: opacity 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
-.hero-arrow--prev { left: clamp(0.75rem, 2vw, 1.75rem); }
-.hero-arrow--next { right: clamp(0.75rem, 2vw, 1.75rem); }
-.hero:hover .hero-arrow,
-.hero:focus-within .hero-arrow,
-.hero-arrow:focus-visible { opacity: 1; }
-.hero-arrow:hover {
+.slide-arrow--prev { left: clamp(0.75rem, 2vw, 1.75rem); }
+.slide-arrow--next { right: clamp(0.75rem, 2vw, 1.75rem); }
+[data-slideshow]:hover .slide-arrow,
+[data-slideshow]:focus-within .slide-arrow,
+.slide-arrow:focus-visible { opacity: 1; }
+.slide-arrow:hover {
   background: rgba(20,20,15,0.5);
   border-color: rgba(255,255,255,0.6);
 }
