@@ -109,3 +109,73 @@
   Array.prototype.forEach.call(
     document.querySelectorAll("[data-slideshow]"), initSlideshow);
 })();
+
+/* Hero video slide.
+
+   The clip is not in the HTML as a src, so it never competes with the first
+   photo or the page itself: it is only requested once the page has finished
+   loading. Small screens get the 720p file, everything else 1080p. With
+   reduced motion on it is never fetched and the poster frame stays up.
+
+   Each time the slide starts fading in (CSS rotation) or is picked with the
+   arrows (manual mode), the clip restarts from START so visitors always see
+   the same stretch of it. Off screen it is paused to save battery.
+*/
+(function () {
+  var START = 0;
+  var reduced = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  Array.prototype.forEach.call(
+    document.querySelectorAll(".hero-slide--video"), function (slide) {
+      var video = slide.querySelector("video");
+      if (!video || reduced) return;
+
+      var ready = false;
+      var load = function () {
+        var small = window.matchMedia("(max-width: 900px)").matches;
+        video.src = small ? video.dataset.srcSmall : video.dataset.srcLarge;
+        video.preload = "auto";
+        ready = true;
+      };
+
+      var restart = function () {
+        if (!ready) return;
+        try { video.currentTime = START; } catch (e) {}
+        var p = video.play();
+        if (p && p.catch) p.catch(function () {});
+      };
+
+      /* CSS rotation: the slide's animation begins / repeats as it fades in. */
+      slide.addEventListener("animationstart", restart);
+      slide.addEventListener("animationiteration", restart);
+
+      /* Manual mode: hero-slides.js toggles .is-active on the chosen slide. */
+      new MutationObserver(function () {
+        if (slide.classList.contains("is-active")) restart();
+        else if (slide.closest(".is-manual")) video.pause();
+      }).observe(slide, { attributes: true, attributeFilter: ["class"] });
+
+      /* Pause while the hero is scrolled out of view. */
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!ready) return;
+            if (entry.isIntersecting) {
+              var p = video.play();
+              if (p && p.catch) p.catch(function () {});
+            } else {
+              video.pause();
+            }
+          });
+        }).observe(slide);
+      }
+
+      if (document.readyState === "complete") load();
+      else window.addEventListener("load", load);
+      video.addEventListener("loadeddata", function () {
+        var p = video.play();
+        if (p && p.catch) p.catch(function () {});
+      }, { once: true });
+    });
+})();

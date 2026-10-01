@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=21">
+<link rel="stylesheet" href="styles.css?v=22">
 </head>
 <body>
   <header>
@@ -72,10 +72,16 @@
          more .hero-slide here and give it a background there.
     ============================================================ -->
     <section class="hero" data-slideshow data-slide-class="hero-slide" data-prev-label="Previous photo" data-next-label="Next photo">
-      <div class="hero-slide" data-label="Shoreline and reef, over-under"></div>
+      <div class="hero-slide" data-label="Kayak over the reef, over-under"></div>
       <div class="hero-slide" data-label="Nurse shark"></div>
       <div class="hero-slide" data-label="Green turtle, night dive"></div>
       <div class="hero-slide" data-label="Fairground, night"></div>
+      <div class="hero-slide hero-slide--video" data-label="Sea turtle nesting">
+        <video muted loop playsinline preload="none" aria-hidden="true"
+               poster="images/video/turtle-nesting-poster.jpg"
+               data-src-small="images/video/turtle-nesting-720.mp4"
+               data-src-large="images/video/turtle-nesting-1080.mp4"></video>
+      </div>
       <div class="hero-content">
         <h1>Land. Water. In between.</h1>
         <p>I'm Shem. A photographer from the UK, living in Mexico. My passion is to share the beautiful experiences I am lucky to have every day.</p>
@@ -161,6 +167,6 @@
       </div>
     </div>
   </footer>
-  <script src="hero-slides.js?v=3" defer></script>
+  <script src="hero-slides.js?v=4" defer></script>
 </body>
 </html>

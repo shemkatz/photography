@@ -325,6 +325,11 @@ nav.container {
    after that.
    The crossfade is pure CSS (see @keyframes heroFade below) so it needs
    no JavaScript — it keeps rotating even if scripts are blocked.
+   The fifth slide is a short muted video loop (images/video/). Its poster
+   frame doubles as the slide's background, so the slide is never empty
+   while the clip loads, with scripts off, or with reduced motion on.
+   hero-slides.js only fetches the clip after the page has loaded, picks
+   the 720p file on small screens, and restarts it each time it fades in.
    ========================================================================== */
 .hero {
   position: relative;
@@ -344,7 +349,7 @@ nav.container {
   inset: 0;
   background: var(--placeholder) center/cover;
   opacity: 0;
-  animation: heroFade 24s infinite;
+  animation: heroFade 30s infinite;
   /* Linear, not the default ease: the outgoing and incoming opacities then
      add up to 1 all the way through the crossfade, so the hero never dips
      dark between photos. */
@@ -362,7 +367,7 @@ nav.container {
 }
 .hero-slide:nth-child(1) {
   animation-delay: 0s;
-  background-image: url('images/underwater/PB090107-web.jpg');
+  background-image: url('images/underwater/PB090028-web.jpg');
 }
 .hero-slide:nth-child(2) {
   animation-delay: 6s;
@@ -376,6 +381,20 @@ nav.container {
      the loss on the empty floor instead. */
   background-position: center 30%;
 }
+.hero-slide:nth-child(5) {
+  animation-delay: 24s;
+  background-image: url('images/video/turtle-nesting-poster.jpg');
+}
+.hero-slide--video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Same framing as the poster underneath, so the switch is seamless. */
+  object-position: center;
+}
+.hero-slide--video::after { z-index: 1; }   /* keep the label above the video */
 .hero-slide:nth-child(3) {
   animation-delay: 12s;
   background-image: url('images/underwater/PC050119-web.jpg');
@@ -438,8 +457,8 @@ nav.container {
 @keyframes heroFade {
   0%    { opacity: 0; }
   8%    { opacity: 1; }
-  25%   { opacity: 1; }   /* hold until the next slide is due (100 / 4) */
-  33%   { opacity: 0; }   /* falls exactly as the next one rises: no dip */
+  20%   { opacity: 1; }   /* hold until the next slide is due (100 / 5) */
+  28%   { opacity: 0; }   /* falls exactly as the next one rises: no dip */
   100%  { opacity: 0; }
 }
 
