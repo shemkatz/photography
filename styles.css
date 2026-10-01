@@ -814,6 +814,15 @@ nav.container {
 .featured p { color: var(--text-muted); margin: 0 0 0.9rem; }
 .featured a.cta { font-size: 0.85rem; color: var(--accent); font-weight: 600; }
 .featured a.cta:hover { text-decoration: underline; }
+/* "See more of my work" — same dropdown as Work in the nav, opened by hover
+   or focus (a tap on touch screens), but left-aligned under the link. */
+.cta-dropdown { display: inline-block; cursor: pointer; }
+.cta-dropdown .cta { font-size: 0.85rem; color: var(--accent); font-weight: 600; }
+.cta-dropdown:hover .cta,
+.cta-dropdown:focus-within .cta { text-decoration: underline; }
+.cta-dropdown .dropdown { left: 0; transform: none; z-index: 5; }
+.cta-dropdown:focus { outline: none; }
+.cta-dropdown:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* ==========================================================================
    TILES — Shop / Journal / Book a session (home page)
