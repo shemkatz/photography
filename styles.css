@@ -635,10 +635,11 @@ nav.container {
 .compare-before { background-color: var(--placeholder); }
 .compare-after {
   background-color: var(--placeholder-alt);
-  /* Clipped from the left edge to the handle, so the edited frame sits on
-     the right of the divider and the unedited one on the left — the order
-     the Before / After labels underneath promise. */
-  clip-path: inset(0 0 0 var(--pos, 50%));
+  /* The edited frame shows from the left edge up to the handle, the
+     unedited one beyond it. So dragging toward the Before label (left)
+     uncovers the unedited photo, and toward After (right) the edited one —
+     each end of the slider shows exactly the label beneath it. */
+  clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0);
 }
 
 /* Each before/after pair names its two frames here. The paths resolve from
