@@ -1080,3 +1080,46 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   *:not(.hero-slide) { transition: none !important; }
 }
+
+/* ==========================================================================
+   SMALL SCREENS
+   Sections such as .about-teaser or .featured set `padding: X 0`, which
+   also wiped out the container's side padding, so on phones their text and
+   photos ran into the screen edges. Re-applied here, last in the file, so
+   every section keeps the same side margin as the header and footer.
+   ========================================================================== */
+.container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (max-width: 480px) {
+  .container { padding-left: 1.25rem; padding-right: 1.25rem; }
+}
+
+@media (max-width: 700px) {
+  /* Home — About teaser: a modest portrait beside the heading rather than a
+     full-width square that fills the whole screen. */
+  .about-teaser {
+    grid-template-columns: 104px 1fr;
+    column-gap: 1.25rem;
+    row-gap: 1rem;
+    align-items: start;
+  }
+  .about-teaser .about-photo { grid-row: 1; align-self: start; }
+  .about-teaser .about-photo img { aspect-ratio: 4 / 5; height: auto; }
+  .about-teaser .about-photo { aspect-ratio: auto; }
+  .about-teaser h2 { margin-top: 0.2rem; }
+
+  /* Home — Portraits: text first, then the photo at a comfortable size,
+     centred instead of stretched edge to edge. */
+  .featured { gap: 1.75rem; }
+  .featured-photo { width: 100%; max-width: 320px; justify-self: center; }
+
+  /* About page — portrait at a sensible size on phones. */
+  .about-full .about-photo { max-width: 240px; }
+
+  /* Galleries — rows sized from the screen width so every tile keeps the
+     same proportions as on a computer: small tiles 3:2, tall tiles about
+     3:4, big tiles 3:2. Fixed 140px rows were cropping the photos hard. */
+  .gallery { grid-auto-rows: calc((100vw - 2.5rem - 0.6rem) / 3); }
+}
