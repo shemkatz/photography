@@ -375,7 +375,7 @@ nav.container {
 }
 .hero-slide:nth-child(4) {
   animation-delay: 18s;
-  background-image: url('images/street/edited-00726-web.jpg');
+  background-image: url('images/land/edited-00726-web.jpg');
   /* A 3:2 frame in a much wider band loses roughly a quarter of its height.
      Sitting the crop above centre keeps headroom over the subject and spends
      the loss on the empty floor instead. */
@@ -908,6 +908,12 @@ nav.container {
 }
 .photo.wide { grid-column: span 2; }
 .photo.tall { grid-row: span 2; }
+/* A lone wide tile closing out a gallery: centre it instead of leaving a
+   hole on the right. Only on the 4-column grid; on phones it is full width
+   anyway. */
+@media (min-width: 701px) {
+  .photo.wide.center { grid-column: 2 / span 2; }
+}
 .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .photo:has(img) { padding: 0; }
 
