@@ -316,8 +316,10 @@ nav.container {
 
 /* ==========================================================================
    HERO — full-bleed, rotating photos
+   Everything shown on the home page lives in images/home/ (copies of the
+   gallery files, so each page reads from its own folder).
    One .hero-slide per photo, set below with
-     background-image: url('images/underwater/PB300088-web.jpg');
+     background-image: url('images/home/PB300088-web.jpg');
    Slides fade in sequence, 6s each. Adding or removing one means three
    edits: a .hero-slide in the HTML, an :nth-child rule below with its own
    delay 6s after the last, and the heroFade cycle length (slides x 6s)
@@ -325,7 +327,7 @@ nav.container {
    after that.
    The crossfade is pure CSS (see @keyframes heroFade below) so it needs
    no JavaScript — it keeps rotating even if scripts are blocked.
-   The fifth slide is a short muted video loop (images/video/). Its poster
+   The fourth slide is a short muted video loop (images/home/). Its poster
    frame doubles as the slide's background, so the slide is never empty
    while the clip loads, with scripts off, or with reduced motion on.
    hero-slides.js only fetches the clip after the page has loaded, picks
@@ -349,7 +351,7 @@ nav.container {
   inset: 0;
   background: var(--placeholder) center/cover;
   opacity: 0;
-  animation: heroFade 30s infinite;
+  animation: heroFade 24s infinite;
   /* Linear, not the default ease: the outgoing and incoming opacities then
      add up to 1 all the way through the crossfade, so the hero never dips
      dark between photos. */
@@ -367,23 +369,15 @@ nav.container {
 }
 .hero-slide:nth-child(1) {
   animation-delay: 0s;
-  background-image: url('images/underwater/PB090028-web.jpg');
+  background-image: url('images/home/PB090028-web.jpg');
 }
 .hero-slide:nth-child(2) {
   animation-delay: 6s;
-  background-image: url('images/underwater/PB300088-web.jpg');
+  background-image: url('images/home/PB300088-web.jpg');
 }
 .hero-slide:nth-child(4) {
   animation-delay: 18s;
-  background-image: url('images/land/edited-00726-web.jpg');
-  /* A 3:2 frame in a much wider band loses roughly a quarter of its height.
-     Sitting the crop above centre keeps headroom over the subject and spends
-     the loss on the empty floor instead. */
-  background-position: center 30%;
-}
-.hero-slide:nth-child(5) {
-  animation-delay: 24s;
-  background-image: url('images/video/turtle-nesting-poster.jpg');
+  background-image: url('images/home/turtle-nesting-poster.jpg');
 }
 .hero-slide--video video {
   position: absolute;
@@ -397,7 +391,7 @@ nav.container {
 .hero-slide--video::after { z-index: 1; }   /* keep the label above the video */
 .hero-slide:nth-child(3) {
   animation-delay: 12s;
-  background-image: url('images/underwater/PC050119-web.jpg');
+  background-image: url('images/home/PC050119-web.jpg');
   /* The turtle sits high in the frame. 18% down the overflow puts its head
      and fins near the top of the hero while leaving the reef below it in
      shot — closer to the top than centre, without pinning it to the edge.
@@ -457,8 +451,8 @@ nav.container {
 @keyframes heroFade {
   0%    { opacity: 0; }
   8%    { opacity: 1; }
-  20%   { opacity: 1; }   /* hold until the next slide is due (100 / 5) */
-  28%   { opacity: 0; }   /* falls exactly as the next one rises: no dip */
+  25%   { opacity: 1; }   /* hold until the next slide is due (100 / 4) */
+  33%   { opacity: 0; }   /* falls exactly as the next one rises: no dip */
   100%  { opacity: 0; }
 }
 
