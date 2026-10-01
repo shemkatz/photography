@@ -357,16 +357,6 @@ nav.container {
      dark between photos. */
   animation-timing-function: linear;
 }
-.hero-slide::after {
-  content: attr(data-label);
-  position: absolute;
-  bottom: 1rem;
-  right: 1.25rem;
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.55);
-  text-transform: uppercase;
-}
 .hero-slide:nth-child(1) {
   animation-delay: 0s;
   background-image: url('images/home/PB090028-web.jpg');
@@ -388,7 +378,6 @@ nav.container {
   /* Same framing as the poster underneath, so the switch is seamless. */
   object-position: center;
 }
-.hero-slide--video::after { z-index: 1; }   /* keep the label above the video */
 .hero-slide:nth-child(3) {
   animation-delay: 12s;
   background-image: url('images/home/PC050119-web.jpg');
@@ -617,6 +606,13 @@ nav.container {
 .compare-wrap { max-width: 640px; margin: 0 auto; width: 100%; }
 .compare {
   position: relative;
+  /* Horizontal drags move the slider (compare-slider.js); vertical swipes
+     still scroll the page on phones. */
+  touch-action: pan-y;
+  cursor: ew-resize;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
   /* --ratio lets each pair match its own frame, so nothing is cropped;
      3/2 stays the default for pairs that don't set one. */
   aspect-ratio: var(--ratio, 3 / 2);
@@ -646,16 +642,6 @@ nav.container {
    this stylesheet, so the same rule serves the English and Spanish pages. */
 .edit-01 .compare-before { background-image: url('images/edits/unedited-2020077-web.jpg'); }
 .edit-01 .compare-after  { background-image: url('images/edits/edited-2020077-web.jpg'); }
-.compare-img::after {
-  content: attr(data-label);
-  position: absolute;
-  bottom: 0.75rem;
-  left: 0.9rem;
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
-}
 .compare-divider {
   position: absolute;
   top: 0;
@@ -691,10 +677,11 @@ nav.container {
   height: 100%;
   margin: 0;
   opacity: 0;
-  cursor: ew-resize;
+  /* Pointer and touch input is handled on .compare by the script; the
+     range only serves keyboard and screen-reader users. */
+  pointer-events: none;
   -webkit-appearance: none;
   appearance: none;
-  touch-action: pan-y;
 }
 .compare-range::-webkit-slider-thumb {
   -webkit-appearance: none;
