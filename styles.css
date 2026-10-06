@@ -390,6 +390,8 @@ nav.container {
 .hero-slide:nth-child(5) {
   animation-delay: 24s;
   background-image: url('images/home/DSC01556-web.jpg');
+  /* Lower than centre so the heads sit closer to the top of the hero. */
+  background-position: center 70%;
 }
 
 /* Manual control — hero-slides.js adds the arrows and, once one is used,
@@ -756,19 +758,20 @@ nav.container {
   object-fit: cover;
   display: block;
   opacity: 0;
-  animation: featuredFade 18s infinite;
+  animation: featuredFade 24s infinite;
   animation-timing-function: linear;   /* so the crossfade never dips */
 }
 .featured-slide:nth-child(1) { animation-delay: 0s; }
 .featured-slide:nth-child(2) { animation-delay: 6s; }
 .featured-slide:nth-child(3) { animation-delay: 12s; }
+.featured-slide:nth-child(4) { animation-delay: 18s; }
 
-/* Three slides, 6s each: each fade-out lines up exactly with the next fade-in. */
+/* Four slides, 6s each: each fade-out lines up exactly with the next fade-in. */
 @keyframes featuredFade {
   0%    { opacity: 0; }
-  5.5%  { opacity: 1; }
-  33.33% { opacity: 1; }
-  38.83% { opacity: 0; }
+  4.17% { opacity: 1; }
+  25%   { opacity: 1; }
+  29.17% { opacity: 0; }
   100%  { opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
