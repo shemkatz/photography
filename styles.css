@@ -351,7 +351,7 @@ nav.container {
   inset: 0;
   background: var(--placeholder) center/cover;
   opacity: 0;
-  animation: heroFade 24s infinite;
+  animation: heroFade 30s infinite;
   /* Linear, not the default ease: the outgoing and incoming opacities then
      add up to 1 all the way through the crossfade, so the hero never dips
      dark between photos. */
@@ -386,6 +386,10 @@ nav.container {
      shot — closer to the top than centre, without pinning it to the edge.
      Adjust this one number per photo. */
   background-position: center 18%;
+}
+.hero-slide:nth-child(5) {
+  animation-delay: 24s;
+  background-image: url('images/home/DSC01556-web.jpg');
 }
 
 /* Manual control — hero-slides.js adds the arrows and, once one is used,
@@ -440,8 +444,8 @@ nav.container {
 @keyframes heroFade {
   0%    { opacity: 0; }
   8%    { opacity: 1; }
-  25%   { opacity: 1; }   /* hold until the next slide is due (100 / 4) */
-  33%   { opacity: 0; }   /* falls exactly as the next one rises: no dip */
+  20%   { opacity: 1; }   /* hold until the next slide is due (100 / 5) */
+  28%   { opacity: 0; }   /* falls exactly as the next one rises: no dip */
   100%  { opacity: 0; }
 }
 
@@ -752,18 +756,19 @@ nav.container {
   object-fit: cover;
   display: block;
   opacity: 0;
-  animation: featuredFade 12s infinite;
+  animation: featuredFade 18s infinite;
   animation-timing-function: linear;   /* so the crossfade never dips */
 }
 .featured-slide:nth-child(1) { animation-delay: 0s; }
 .featured-slide:nth-child(2) { animation-delay: 6s; }
+.featured-slide:nth-child(3) { animation-delay: 12s; }
 
-/* Two slides, 6s each: each fade-out lines up exactly with the next fade-in. */
+/* Three slides, 6s each: each fade-out lines up exactly with the next fade-in. */
 @keyframes featuredFade {
   0%    { opacity: 0; }
-  8%    { opacity: 1; }
-  50%   { opacity: 1; }
-  58%   { opacity: 0; }
+  5.5%  { opacity: 1; }
+  33.33% { opacity: 1; }
+  38.83% { opacity: 0; }
   100%  { opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
