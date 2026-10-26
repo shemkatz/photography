@@ -502,6 +502,17 @@ nav.container {
   opacity: 0.9;
   margin: 0;
 }
+/* Location line under the headline: same display face, lighter and
+   letter-spaced so it reads as a quiet caption rather than a second title. */
+.hero-content .hero-place {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  max-width: none;
+}
 
 /* ==========================================================================
    PAGE HEADER — the quieter opener used on every page besides Home
