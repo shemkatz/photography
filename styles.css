@@ -327,11 +327,6 @@ nav.container {
    after that.
    The crossfade is pure CSS (see @keyframes heroFade below) so it needs
    no JavaScript — it keeps rotating even if scripts are blocked.
-   The sixth (last) slide is a short muted video loop (images/home/). Its poster
-   frame doubles as the slide's background, so the slide is never empty
-   while the clip loads, with scripts off, or with reduced motion on.
-   hero-slides.js only fetches the clip after the page has loaded, picks
-   the 720p file on small screens, and restarts it each time it fades in.
    ========================================================================== */
 .hero {
   position: relative;
@@ -351,7 +346,7 @@ nav.container {
   inset: 0;
   background: var(--placeholder) center/cover;
   opacity: 0;
-  animation: heroFade 36s infinite;
+  animation: heroFade 30s infinite;
   /* Linear, not the default ease: the outgoing and incoming opacities then
      add up to 1 all the way through the crossfade, so the hero never dips
      dark between photos. */
@@ -391,19 +386,6 @@ nav.container {
      shot — closer to the top than centre, without pinning it to the edge.
      Adjust this one number per photo. */
   background-position: center 18%;
-}
-.hero-slide:nth-child(6) {
-  animation-delay: 30s;
-  background-image: url('images/home/turtle-nesting-poster.jpg');
-}
-.hero-slide--video video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* Same framing as the poster underneath, so the switch is seamless. */
-  object-position: center;
 }
 
 /* Manual control — hero-slides.js adds the arrows and, once one is used,
@@ -457,9 +439,9 @@ nav.container {
 
 @keyframes heroFade {
   0%    { opacity: 0; }
-  6.67% { opacity: 1; }
-  16.67% { opacity: 1; }  /* hold until the next slide is due (100 / 6) */
-  23.33% { opacity: 0; }   /* falls exactly as the next one rises: no dip */
+  8%    { opacity: 1; }
+  20%   { opacity: 1; }   /* hold until the next slide is due (100 / 5) */
+  28%   { opacity: 0; }   /* falls exactly as the next one rises: no dip */
   100%  { opacity: 0; }
 }
 
