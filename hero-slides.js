@@ -179,3 +179,15 @@
       }, { once: true });
     });
 })();
+
+/* Hero photos after the first: release their backgrounds once the page has
+   finished loading (see the .bg-ready rule in styles.css). */
+(function () {
+  var ready = function () {
+    Array.prototype.forEach.call(document.querySelectorAll(".hero"), function (hero) {
+      hero.classList.add("bg-ready");
+    });
+  };
+  if (document.readyState === "complete") ready();
+  else window.addEventListener("load", ready);
+})();
