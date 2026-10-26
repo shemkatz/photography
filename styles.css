@@ -1137,3 +1137,23 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
      3:4, big tiles 3:2. Fixed 140px rows were cropping the photos hard. */
   .gallery { grid-auto-rows: calc((100vw - 2.5rem - 0.6rem) / 3); }
 }
+
+/* ==========================================================================
+   SIX-COLUMN GALLERY — Couples and Editorial pages
+   Two wide photos across the top, then three portraits side by side. On a
+   4-column grid three portraits always leave a gap, so these pages use six
+   narrower columns: wide tiles take 3 columns x 2 rows (about 3:2) and
+   portrait tiles 2 columns x 3 rows (about 2:3). Phones keep the six
+   columns with smaller rows, so the wide tiles go full width and the three
+   portraits still sit in one row.
+   ========================================================================== */
+.gallery--six { grid-template-columns: repeat(6, 1fr); }
+.gallery--six .photo.span3 { grid-column: span 3; grid-row: span 2; }
+.gallery--six .photo.span2 { grid-column: span 2; grid-row: span 3; }
+@media (max-width: 700px) {
+  .gallery--six {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: calc((100vw - 2.5rem - 3rem) / 6);
+  }
+  .gallery--six .photo.span3 { grid-column: span 6; grid-row: span 4; }
+}
