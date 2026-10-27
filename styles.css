@@ -388,6 +388,18 @@ nav.container {
   background-position: center 18%;
 }
 
+/* Phones/tablets (up to ~900px wide) and ordinary-density screens up to
+   1600px wide: a 1600px copy of each photo is still pin-sharp there and
+   about a third lighter than the full 2000px file. The lazy-loading rule above still wins
+   for slides 2-5 until the page has loaded. */
+@media (max-width: 900px), (max-width: 1600px) and (max-resolution: 1.5dppx) {
+  .hero-slide:nth-child(1) { background-image: url('images/home/DSC01937-web-1600.jpg'); }
+  .hero-slide:nth-child(2) { background-image: url('images/home/DSC01556-web-1600.jpg'); }
+  .hero-slide:nth-child(3) { background-image: url('images/home/PB090028-web-1600.jpg'); }
+  .hero-slide:nth-child(4) { background-image: url('images/home/PB300088-web-1600.jpg'); }
+  .hero-slide:nth-child(5) { background-image: url('images/home/PC050119-web-1600.jpg'); }
+}
+
 /* Manual control — hero-slides.js adds the arrows and, once one is used,
    puts .is-manual on the hero: the CSS rotation stops and the script
    crossfades between slides instead. Without JavaScript none of this
