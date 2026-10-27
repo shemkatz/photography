@@ -120,4 +120,16 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://shemkatz.com/es/book-a-session.html"/>
     <lastmod>2026-10-27</lastmod>
   </url>
+  <url>
+    <loc>https://shemkatz.com/shop.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shemkatz.com/shop.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shemkatz.com/es/shop.html"/>
+    <lastmod>2026-10-27</lastmod>
+  </url>
+  <url>
+    <loc>https://shemkatz.com/es/shop.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shemkatz.com/shop.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shemkatz.com/es/shop.html"/>
+    <lastmod>2026-10-27</lastmod>
+  </url>
 </urlset>

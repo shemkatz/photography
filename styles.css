@@ -316,10 +316,10 @@ nav.container {
 
 /* ==========================================================================
    HERO — full-bleed, rotating photos
-   Everything shown on the home page lives in images/home/ (copies of the
-   gallery files, so each page reads from its own folder).
+   Each photo lives once, in its gallery folder (images/land/, images/couples/
+   and so on); the home page points at those same files rather than copies.
    One .hero-slide per photo, set below with
-     background-image: url('images/home/PB300088-web.jpg');
+     background-image: url('images/underwater/PB300088-web.jpg');
    Slides fade in sequence, 6s each. Adding or removing one means three
    edits: a .hero-slide in the HTML, an :nth-child rule below with its own
    delay 6s after the last, and the heroFade cycle length (slides x 6s)
@@ -346,7 +346,7 @@ nav.container {
   inset: 0;
   background: var(--placeholder) center/cover;
   opacity: 0;
-  animation: heroFade 30s infinite;
+  animation: heroFade 36s infinite;
   /* Linear, not the default ease: the outgoing and incoming opacities then
      add up to 1 all the way through the crossfade, so the hero never dips
      dark between photos. */
@@ -360,44 +360,49 @@ nav.container {
 .js .hero:not(.bg-ready) .hero-slide:not(:first-child) { background-image: none; }
 .hero-slide:nth-child(1) {
   animation-delay: 0s;
-  background-image: url('images/home/DSC01937-web.jpg');
+  background-image: url('images/land/DSC01937-web.jpg');
   /* The couple stand left of centre: keep them in frame on narrow screens. */
   background-position: 25% center;
 }
 .hero-slide:nth-child(2) {
   animation-delay: 6s;
-  background-image: url('images/home/DSC01556-web.jpg');
+  background-image: url('images/editorial/DSC01556-web.jpg');
   /* Lower than centre so the heads sit closer to the top of the hero. */
   background-position: center 70%;
 }
 .hero-slide:nth-child(3) {
   animation-delay: 12s;
-  background-image: url('images/home/PB090028-web.jpg');
+  background-image: url('images/underwater/PB090028-web.jpg');
 }
 .hero-slide:nth-child(4) {
   animation-delay: 18s;
-  background-image: url('images/home/PB300088-web.jpg');
+  background-image: url('images/underwater/PB300088-web.jpg');
 }
 .hero-slide:nth-child(5) {
   animation-delay: 24s;
-  background-image: url('images/home/PC050119-web.jpg');
+  background-image: url('images/underwater/PC050119-web.jpg');
   /* The turtle sits high in the frame. 18% down the overflow puts its head
      and fins near the top of the hero while leaving the reef below it in
      shot — closer to the top than centre, without pinning it to the edge.
      Adjust this one number per photo. */
   background-position: center 18%;
 }
+.hero-slide:nth-child(6) {
+  animation-delay: 30s;
+  background-image: url('images/land/DSC02262-web.jpg');
+}
 
 /* Phones/tablets (up to ~900px wide) and ordinary-density screens up to
    1600px wide: a 1600px copy of each photo is still pin-sharp there and
    about a third lighter than the full 2000px file. The lazy-loading rule above still wins
-   for slides 2-5 until the page has loaded. */
+   for slides 2-6 until the page has loaded. */
 @media (max-width: 900px), (max-width: 1600px) and (max-resolution: 1.5dppx) {
-  .hero-slide:nth-child(1) { background-image: url('images/home/DSC01937-web-1600.jpg'); }
-  .hero-slide:nth-child(2) { background-image: url('images/home/DSC01556-web-1600.jpg'); }
-  .hero-slide:nth-child(3) { background-image: url('images/home/PB090028-web-1600.jpg'); }
-  .hero-slide:nth-child(4) { background-image: url('images/home/PB300088-web-1600.jpg'); }
-  .hero-slide:nth-child(5) { background-image: url('images/home/PC050119-web-1600.jpg'); }
+  .hero-slide:nth-child(1) { background-image: url('images/land/DSC01937-web-1600.jpg'); }
+  .hero-slide:nth-child(2) { background-image: url('images/editorial/DSC01556-web-1600.jpg'); }
+  .hero-slide:nth-child(3) { background-image: url('images/underwater/PB090028-web-1600.jpg'); }
+  .hero-slide:nth-child(4) { background-image: url('images/underwater/PB300088-web-1600.jpg'); }
+  .hero-slide:nth-child(5) { background-image: url('images/underwater/PC050119-web-1600.jpg'); }
+  .hero-slide:nth-child(6) { background-image: url('images/land/DSC02262-web-1600.jpg'); }
 }
 
 /* Manual control — hero-slides.js adds the arrows and, once one is used,
@@ -451,9 +456,9 @@ nav.container {
 
 @keyframes heroFade {
   0%    { opacity: 0; }
-  8%    { opacity: 1; }
-  20%   { opacity: 1; }   /* hold until the next slide is due (100 / 5) */
-  28%   { opacity: 0; }   /* falls exactly as the next one rises: no dip */
+  6.67% { opacity: 1; }
+  16.67% { opacity: 1; }  /* hold until the next slide is due (100 / 6) */
+  23.33% { opacity: 0; }   /* falls exactly as the next one rises: no dip */
   100%  { opacity: 0; }
 }
 
@@ -664,7 +669,7 @@ nav.container {
 /* Each before/after pair names its two frames here. The paths resolve from
    this stylesheet, so the same rule serves the English and Spanish pages. */
 .edit-01 .compare-before { background-image: url('images/edits/unedited-2020077-web.jpg'); }
-.edit-01 .compare-after  { background-image: url('images/edits/edited-2020077-web.jpg'); }
+.edit-01 .compare-after  { background-image: url('images/underwater/P2020077-web.jpg'); }
 .compare-divider {
   position: absolute;
   top: 0;
@@ -1151,26 +1156,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 }
 
 /* ==========================================================================
-   SIX-COLUMN GALLERY — Couples and Editorial pages
-   Two wide photos across the top, then three portraits side by side. On a
-   4-column grid three portraits always leave a gap, so these pages use six
-   narrower columns: wide tiles take 3 columns x 2 rows (about 3:2) and
-   portrait tiles 2 columns x 3 rows (about 2:3). Phones keep the six
-   columns with smaller rows, so the wide tiles go full width and the three
-   portraits still sit in one row.
-   ========================================================================== */
-.gallery--six { grid-template-columns: repeat(6, 1fr); }
-.gallery--six .photo.span3 { grid-column: span 3; grid-row: span 2; }
-.gallery--six .photo.span2 { grid-column: span 2; grid-row: span 3; }
-@media (max-width: 700px) {
-  .gallery--six {
-    grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: calc((100vw - 2.5rem - 3rem) / 6);
-  }
-  .gallery--six .photo.span3 { grid-column: span 6; grid-row: span 4; }
-}
-
-/* ==========================================================================
    PACKAGES + BOOKING — Couples & Proposals page and Book a Session page
    ========================================================================== */
 .btn {
@@ -1252,3 +1237,5 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 .services-intro { color: var(--text-muted); max-width: 62ch; margin: 0 0 1.25rem; }
 #dive-trips .section-label { margin-bottom: 0.75rem; }
 #dive-trips .package-extras { margin-bottom: 0.9rem; }
+.prints-cta { margin: 1.75rem 0 0.25rem; }
+.prints-section { padding-bottom: 4rem; }
