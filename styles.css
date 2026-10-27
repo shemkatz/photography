@@ -1224,3 +1224,19 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 }
 .steps p { color: var(--text-muted); font-size: 0.92rem; margin: 0; }
 .booking .btn { margin: 0.5rem 0 0.5rem; }
+
+/* Home — Couples frame: three photos, 6s each (the Portraits frame below
+   has five, so it keeps the 30s featuredFade cycle). */
+.featured--couples .featured-slide { animation-name: featuredFade3; animation-duration: 18s; }
+@keyframes featuredFade3 {
+  0%     { opacity: 0; }
+  5.5%   { opacity: 1; }
+  33.33% { opacity: 1; }
+  38.83% { opacity: 0; }
+  100%   { opacity: 0; }
+}
+/* Portraits follows directly after Couples: no second divider line. */
+.featured--couples + .featured { border-top: none; padding-top: 0; }
+.services-intro { color: var(--text-muted); max-width: 62ch; margin: 0 0 1.25rem; }
+#dive-trips .section-label { margin-bottom: 0.75rem; }
+#dive-trips .package-extras { margin-bottom: 0.9rem; }

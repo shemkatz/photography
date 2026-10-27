@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add("js")</script>
-<link rel="stylesheet" href="../styles.css?v=36">
+<link rel="stylesheet" href="../styles.css?v=38">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -111,6 +111,13 @@
       "itemOffered": {
         "@type": "Service",
         "name": "Fotografía de bienes raíces"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Fotografía en salidas de buceo"
       }
     }
   ],
@@ -207,6 +214,24 @@
     </section>
 
     <!-- ============================================================
+         PAREJAS — mismo diseño que el cuadro de Retratos, con su propio
+         fundido de tres fotos (ver .featured--couples en styles.css).
+    ============================================================ -->
+    <section class="container featured featured--couples">
+      <div class="featured-text">
+        <h2>Parejas y propuestas</h2>
+        <p>Propuestas sorpresa o abiertas, compromisos y sesiones románticas para dos en las playas y acantilados de Puerto Escondido. Paquetes desde 1,900 MXN.</p>
+        <a class="cta" href="work-couples.html">Ver paquetes y detalles &rarr;</a>
+      </div>
+      <figure class="featured-photo" data-slideshow data-slide-class="featured-slide"
+              data-prev-label="Foto anterior" data-next-label="Foto siguiente">
+        <img class="featured-slide" src="../images/home/P1170120-web.jpg" alt="Dos buzos sonrientes en la superficie sostienen un cartel que dice &laquo;Will you marry me?&raquo;, en una foto mitad sobre y mitad bajo el agua" width="1500" height="2000" loading="lazy">
+        <img class="featured-slide" src="../images/home/DSC02037-web.jpg" alt="Un hombre levanta en brazos a una mujer que ríe en una playa de piedras, desenfocados por el movimiento" width="1333" height="2000" loading="lazy">
+        <img class="featured-slide" src="../images/home/DSC02047-web.jpg" alt="Un hombre lanza al aire a un perrito en una playa rocosa mientras una mujer ríe a su lado" width="1333" height="2000" loading="lazy">
+      </figure>
+    </section>
+
+    <!-- ============================================================
          CUADRO DESTACADO — una foto mostrada en su propia proporción,
          para que los formatos verticales no se recorten en el diseño.
     ============================================================ -->
@@ -244,9 +269,9 @@
     <section class="container tiles-section">
       <div class="tiles">
         <a class="tile" href="shop.html">
-          <h3>Tienda</h3>
+          <h3>Impresiones</h3>
           <p>Impresiones de edición limitada de una selección de mi trabajo de paisaje, con envío a todo el mundo.</p>
-          <span class="status">Próximamente</span>
+          <span class="status">Contáctame</span>
         </a>
         <a class="tile" href="journal.html">
           <h3>Diario</h3>

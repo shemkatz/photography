@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add("js")</script>
-<link rel="stylesheet" href="styles.css?v=36">
+<link rel="stylesheet" href="styles.css?v=38">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -111,6 +111,13 @@
       "itemOffered": {
         "@type": "Service",
         "name": "Real estate photography"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Dive trip photography"
       }
     }
   ],
@@ -207,6 +214,24 @@
     </section>
 
     <!-- ============================================================
+         COUPLES — same layout as the Portraits frame below, with its
+         own three-photo crossfade (see .featured--couples in styles.css).
+    ============================================================ -->
+    <section class="container featured featured--couples">
+      <div class="featured-text">
+        <h2>Couples &amp; Proposals</h2>
+        <p>Secret or open proposals, engagements and romantic sessions for two on the beaches and clifftops of Puerto Escondido. Packages from 1,900 MXN.</p>
+        <a class="cta" href="work-couples.html">See packages &amp; details &rarr;</a>
+      </div>
+      <figure class="featured-photo" data-slideshow data-slide-class="featured-slide"
+              data-prev-label="Previous photo" data-next-label="Next photo">
+        <img class="featured-slide" src="images/home/P1170120-web.jpg" alt="Two smiling divers at the surface holding a &lsquo;Will you marry me?&rsquo; banner, shot half above and half below the water" width="1500" height="2000" loading="lazy">
+        <img class="featured-slide" src="images/home/DSC02037-web.jpg" alt="A man lifting a laughing woman into his arms on a pebbly beach, blurred with movement" width="1333" height="2000" loading="lazy">
+        <img class="featured-slide" src="images/home/DSC02047-web.jpg" alt="A man tossing a small dog into the air on a rocky beach as a woman laughs beside him" width="1333" height="2000" loading="lazy">
+      </figure>
+    </section>
+
+    <!-- ============================================================
          FEATURED FRAME — one photo shown at its own aspect ratio,
          so portrait frames are not cropped into the layout.
     ============================================================ -->
@@ -244,9 +269,9 @@
     <section class="container tiles-section">
       <div class="tiles">
         <a class="tile" href="shop.html">
-          <h3>Shop</h3>
+          <h3>Prints</h3>
           <p>Limited-edition prints of select landscape work, shipped worldwide.</p>
-          <span class="status">Coming soon</span>
+          <span class="status">Contact me</span>
         </a>
         <a class="tile" href="journal.html">
           <h3>Journal</h3>
