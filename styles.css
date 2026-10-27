@@ -216,6 +216,9 @@ nav.container {
 .lang-switch:hover { color: var(--text); }
 .lang-switch::after { content: " \25BE"; font-size: 0.7em; }
 .lang-dropdown { min-width: 140px; }
+/* Right-aligned to the EN/ES button so the menu never pokes past the
+   screen edge (which caused a sideways scroll on mid-size windows). */
+.lang-switch .lang-dropdown { left: auto; right: 0; transform: none; }
 .lang-dropdown a.current { color: var(--accent); font-weight: 600; }
 
 .has-dropdown { position: relative; }
@@ -1239,3 +1242,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 #dive-trips .package-extras { margin-bottom: 0.9rem; }
 .prints-cta { margin: 1.75rem 0 0.25rem; }
 .prints-section { padding-bottom: 4rem; }
+
+/* Narrow laptops/tablets (just above the phone menu): tighten the menu so
+   Work, Prints, About, Editing and Contact still fit on one line. */
+@media (min-width: 701px) and (max-width: 900px) {
+  .nav-links { gap: 1.1rem; font-size: 0.9rem; }
+  .nav-right { gap: 1rem; }
+}
