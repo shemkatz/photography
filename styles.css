@@ -783,7 +783,7 @@ nav.container {
   object-fit: cover;
   display: block;
   opacity: 0;
-  animation: featuredFade 30s infinite;
+  animation: featuredFade 24s infinite;
   animation-timing-function: linear;   /* so the crossfade never dips */
 }
 .featured-slide:nth-child(1) { animation-delay: 0s; }
@@ -792,12 +792,12 @@ nav.container {
 .featured-slide:nth-child(4) { animation-delay: 18s; }
 .featured-slide:nth-child(5) { animation-delay: 24s; }
 
-/* Five slides, 6s each: each fade-out lines up exactly with the next fade-in. */
+/* Four slides, 6s each: each fade-out lines up exactly with the next fade-in. */
 @keyframes featuredFade {
   0%    { opacity: 0; }
-  3.33% { opacity: 1; }
-  20%   { opacity: 1; }
-  23.33% { opacity: 0; }
+  4.17% { opacity: 1; }
+  25%   { opacity: 1; }
+  29.17% { opacity: 0; }
   100%  { opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1225,15 +1225,16 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 .steps p { color: var(--text-muted); font-size: 0.92rem; margin: 0; }
 .booking .btn { margin: 0.5rem 0 0.5rem; }
 
-/* Home — Couples frame: six photos, 6s each (the Portraits frame below
+/* Home — Couples frame: seven photos, 6s each (the Portraits frame below
    has five, so it keeps the 30s featuredFade cycle). */
-.featured--couples .featured-slide { animation-name: featuredFade6; animation-duration: 36s; }
+.featured--couples .featured-slide { animation-name: featuredFade7; animation-duration: 42s; }
 .featured-slide:nth-child(6) { animation-delay: 30s; }
-@keyframes featuredFade6 {
+.featured-slide:nth-child(7) { animation-delay: 36s; }
+@keyframes featuredFade7 {
   0%     { opacity: 0; }
-  2.78%  { opacity: 1; }
-  16.67% { opacity: 1; }
-  19.44% { opacity: 0; }
+  2.38%  { opacity: 1; }
+  14.29% { opacity: 1; }
+  16.67% { opacity: 0; }
   100%   { opacity: 0; }
 }
 /* Portraits follows directly after Couples: no second divider line. */
