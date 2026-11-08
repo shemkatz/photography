@@ -16,15 +16,17 @@
 <meta property="og:image" content="https://shemkatz.com/images/home/self_portrait-web.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=43">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="styles.css?v=45">
 </head>
 <body>
   <header>
     <nav class="container">
-      <a class="wordmark" href="index.html">Shem Katz</a>
+      <a class="wordmark" href="index.html"><span class="wordmark-name">Shem Katz</span> <span class="wordmark-sub">Scuba &amp; Photography</span></a>
       <div class="nav-right">
         <div class="nav-links">
+          <a href="learn-to-dive.html">Learn to dive</a>
           <div class="has-dropdown" tabindex="0">
             Work
             <div class="dropdown">
@@ -55,6 +57,7 @@
           <summary aria-label="Open menu"></summary>
           <div class="mobile-panel">
             <a href="index.html">Home</a>
+            <a href="learn-to-dive.html">Learn to dive</a>
             <div class="sub-label">Work</div>
             <a href="work-land.html">Land</a>
             <a href="work-underwater.html">Water</a>
@@ -82,11 +85,12 @@
     </section>
     <section class="container about-full">
       <div>
-        <div class="about-photo"><img src="images/home/self_portrait-web.jpg" srcset="images/home/self_portrait-web-480.jpg 480w, images/home/self_portrait-web-800.jpg 800w, images/home/self_portrait-web-1200.jpg 1200w, images/home/self_portrait-web.jpg 1245w" sizes="(max-width: 700px) 240px, 420px" alt="Portrait of Shem Katz" width="1245" height="1400" loading="lazy"></div>
+        <div class="about-photo"><picture><source type="image/avif" srcset="images/home/self_portrait-web-480.avif 480w, images/home/self_portrait-web-800.avif 800w, images/home/self_portrait-web-1200.avif 1200w, images/home/self_portrait-web.avif 1245w" sizes="(max-width: 700px) 240px, 420px"><img src="images/home/self_portrait-web.jpg" srcset="images/home/self_portrait-web-480.jpg 480w, images/home/self_portrait-web-800.jpg 800w, images/home/self_portrait-web-1200.jpg 1200w, images/home/self_portrait-web.jpg 1245w" sizes="(max-width: 700px) 240px, 420px" alt="Portrait of Shem Katz" width="1245" height="1400" loading="lazy"></picture></div>
       </div>
       <div>
-        <p>I'm Shem &mdash; a photographer and diver from the UK, based in Puerto Escondido, Oaxaca, and happy to collaborate worldwide.</p>
+        <p>I'm Shem &mdash; a photographer and SSI Scuba Instructor from the UK, based in Puerto Escondido, Oaxaca, and happy to collaborate worldwide.</p>
         <p>My passion is sharing the beautiful encounters I'm lucky enough to have every day, whether below the surface or above it.</p>
+        <p>I also teach: small-group SSI scuba courses, from Try Scuba to Open Water, plus photography classes on land and underwater. Every dive course comes with photos of you underwater &mdash; see <a href="learn-to-dive.html" style="color:var(--accent); font-weight:600;">Learn to dive</a>.</p>
         <p>I've been taking photos since I was 16 and have explored many formats along the way, so my style is quite diverse. I love underwater photography because it reveals a whole universe the human eye rarely gets to see. Street photography is just as exciting to me &mdash; it captures a single moment with the power to tell a story. And I take real pride in my commissioned work, bringing that knowledge and experience to capturing beautiful moments and stunning spaces.</p>
         <p>
           I'm by the ocean most days, and when I'm not, you'll find me eating well and dancing. If you'd like to work together, the
@@ -98,7 +102,7 @@
   </main>
   <footer>
     <div class="container">
-      <div class="footer-meta">&copy; 2026 Shem Katz</div>
+      <div class="footer-meta">&copy; 2026 Shem Katz Scuba &amp; Photography</div>
       <div class="social-links">
         <a href="https://www.instagram.com/shemkatz/" target="_blank" rel="noopener" aria-label="Instagram">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

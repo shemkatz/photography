@@ -177,10 +177,29 @@ nav.container {
   gap: 1.5rem;
 }
 
+/* Two-line lockup: the name as before, with "Scuba & Photography" set
+   small and letter-spaced underneath, so the full business name shows on
+   every page without crowding the menu. */
 .wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1.05;
+  flex-shrink: 0;
+}
+.wordmark-name {
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 500;
+}
+.wordmark-sub {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+  white-space: nowrap;
 }
 
 .nav-right {
@@ -323,6 +342,7 @@ nav.container {
    and so on); the home page points at those same files rather than copies.
    One .hero-slide per photo, set below with
      background-image: url('images/underwater/PB300088-web.jpg');
+  background-image: image-set(url('images/underwater/PB300088-web.avif') type("image/avif"), url('images/underwater/PB300088-web.jpg') type("image/jpeg"));
    Slides fade in sequence, 6s each. Adding or removing one means three
    edits: a .hero-slide in the HTML, an :nth-child rule below with its own
    delay 6s after the last, and the heroFade cycle length (slides x 6s)
@@ -364,26 +384,31 @@ nav.container {
 .hero-slide:nth-child(1) {
   animation-delay: 0s;
   background-image: url('images/land/DSC01937-web.jpg');
+  background-image: image-set(url('images/land/DSC01937-web.avif') type("image/avif"), url('images/land/DSC01937-web.jpg') type("image/jpeg"));
   /* The couple stand left of centre: keep them in frame on narrow screens. */
   background-position: 25% center;
 }
 .hero-slide:nth-child(2) {
   animation-delay: 6s;
   background-image: url('images/editorial/DSC01556-web.jpg');
+  background-image: image-set(url('images/editorial/DSC01556-web.avif') type("image/avif"), url('images/editorial/DSC01556-web.jpg') type("image/jpeg"));
   /* Lower than centre so the heads sit closer to the top of the hero. */
   background-position: center 70%;
 }
 .hero-slide:nth-child(3) {
   animation-delay: 12s;
   background-image: url('images/underwater/PB090028-web.jpg');
+  background-image: image-set(url('images/underwater/PB090028-web.avif') type("image/avif"), url('images/underwater/PB090028-web.jpg') type("image/jpeg"));
 }
 .hero-slide:nth-child(4) {
   animation-delay: 18s;
   background-image: url('images/underwater/PB300088-web.jpg');
+  background-image: image-set(url('images/underwater/PB300088-web.avif') type("image/avif"), url('images/underwater/PB300088-web.jpg') type("image/jpeg"));
 }
 .hero-slide:nth-child(5) {
   animation-delay: 24s;
   background-image: url('images/underwater/PC050119-web.jpg');
+  background-image: image-set(url('images/underwater/PC050119-web.avif') type("image/avif"), url('images/underwater/PC050119-web.jpg') type("image/jpeg"));
   /* The turtle sits high in the frame. 18% down the overflow puts its head
      and fins near the top of the hero while leaving the reef below it in
      shot — closer to the top than centre, without pinning it to the edge.
@@ -393,6 +418,7 @@ nav.container {
 .hero-slide:nth-child(6) {
   animation-delay: 30s;
   background-image: url('images/land/DSC02262-web.jpg');
+  background-image: image-set(url('images/land/DSC02262-web.avif') type("image/avif"), url('images/land/DSC02262-web.jpg') type("image/jpeg"));
 }
 
 /* Phones/tablets (up to ~900px wide) and ordinary-density screens up to
@@ -400,12 +426,18 @@ nav.container {
    about a third lighter than the full 2000px file. The lazy-loading rule above still wins
    for slides 2-6 until the page has loaded. */
 @media (max-width: 900px), (max-width: 1600px) and (max-resolution: 1.5dppx) {
-  .hero-slide:nth-child(1) { background-image: url('images/land/DSC01937-web-1600.jpg'); }
-  .hero-slide:nth-child(2) { background-image: url('images/editorial/DSC01556-web-1600.jpg'); }
-  .hero-slide:nth-child(3) { background-image: url('images/underwater/PB090028-web-1600.jpg'); }
-  .hero-slide:nth-child(4) { background-image: url('images/underwater/PB300088-web-1600.jpg'); }
-  .hero-slide:nth-child(5) { background-image: url('images/underwater/PC050119-web-1600.jpg'); }
-  .hero-slide:nth-child(6) { background-image: url('images/land/DSC02262-web-1600.jpg'); }
+  .hero-slide:nth-child(1) { background-image: url('images/land/DSC01937-web-1600.jpg');
+  background-image: image-set(url('images/land/DSC01937-web-1600.avif') type("image/avif"), url('images/land/DSC01937-web-1600.jpg') type("image/jpeg")); }
+  .hero-slide:nth-child(2) { background-image: url('images/editorial/DSC01556-web-1600.jpg');
+  background-image: image-set(url('images/editorial/DSC01556-web-1600.avif') type("image/avif"), url('images/editorial/DSC01556-web-1600.jpg') type("image/jpeg")); }
+  .hero-slide:nth-child(3) { background-image: url('images/underwater/PB090028-web-1600.jpg');
+  background-image: image-set(url('images/underwater/PB090028-web-1600.avif') type("image/avif"), url('images/underwater/PB090028-web-1600.jpg') type("image/jpeg")); }
+  .hero-slide:nth-child(4) { background-image: url('images/underwater/PB300088-web-1600.jpg');
+  background-image: image-set(url('images/underwater/PB300088-web-1600.avif') type("image/avif"), url('images/underwater/PB300088-web-1600.jpg') type("image/jpeg")); }
+  .hero-slide:nth-child(5) { background-image: url('images/underwater/PC050119-web-1600.jpg');
+  background-image: image-set(url('images/underwater/PC050119-web-1600.avif') type("image/avif"), url('images/underwater/PC050119-web-1600.jpg') type("image/jpeg")); }
+  .hero-slide:nth-child(6) { background-image: url('images/land/DSC02262-web-1600.jpg');
+  background-image: image-set(url('images/land/DSC02262-web-1600.avif') type("image/avif"), url('images/land/DSC02262-web-1600.jpg') type("image/jpeg")); }
 }
 
 /* Manual control — hero-slides.js adds the arrows and, once one is used,
@@ -671,8 +703,10 @@ nav.container {
 
 /* Each before/after pair names its two frames here. The paths resolve from
    this stylesheet, so the same rule serves the English and Spanish pages. */
-.edit-01 .compare-before { background-image: url('images/edits/unedited-2020077-web.jpg'); }
-.edit-01 .compare-after  { background-image: url('images/underwater/P2020077-web.jpg'); }
+.edit-01 .compare-before { background-image: url('images/edits/unedited-2020077-web.jpg');
+  background-image: image-set(url('images/edits/unedited-2020077-web.avif') type("image/avif"), url('images/edits/unedited-2020077-web.jpg') type("image/jpeg")); }
+.edit-01 .compare-after  { background-image: url('images/underwater/P2020077-web.jpg');
+  background-image: image-set(url('images/underwater/P2020077-web.avif') type("image/avif"), url('images/underwater/P2020077-web.jpg') type("image/jpeg")); }
 .compare-divider {
   position: absolute;
   top: 0;
@@ -1250,4 +1284,274 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 @media (min-width: 701px) and (max-width: 900px) {
   .nav-links { gap: 1.1rem; font-size: 0.9rem; }
   .nav-right { gap: 1rem; }
+}
+
+/* AVIF: every photo also exists as a .avif file about half the size of the
+   JPEG. <picture> elements serve it to browsers that support it (nearly all
+   current ones) and fall back to the JPEG; CSS backgrounds use image-set().
+   The <picture> wrapper is layout-neutral everywhere except the home page
+   slideshows, where the picture itself is the slide. */
+picture { display: contents; }
+picture.featured-slide { display: block; }
+picture.featured-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ==========================================================================
+   SCUBA + PHOTOGRAPHY — added Nov 2026
+   Hero buttons, the two "paths" cards under the hero, the wide dive frame
+   on the home page, and the Learn to dive page (learn-to-dive.html).
+   ========================================================================== */
+
+/* Hero: two clear routes straight from the first screen. */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.4rem;
+}
+.hero-actions .btn { font-size: 0.92rem; padding: 0.75rem 1.35rem; }
+.btn--light { background: #fdfcf9; color: #1a1a18; }
+.btn--ghost {
+  background: rgba(20,20,15,0.25);
+  color: #fdfcf9;
+  border: 1px solid rgba(253,252,249,0.75);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.btn--ghost:hover { background: rgba(20,20,15,0.45); opacity: 1; }
+
+/* Paths: Scuba / Photography, side by side. */
+.paths-section { padding-top: clamp(2.5rem, 6vw, 4rem); }
+.paths {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+@media (max-width: 860px) {
+  .paths { grid-template-columns: 1fr; }
+}
+.path {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+.path:hover { border-color: var(--accent); }
+.path-media {
+  display: block;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--placeholder);
+}
+.path-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.path:hover .path-media img { transform: scale(1.03); }
+@media (prefers-reduced-motion: reduce) {
+  .path-media img { transition: none; }
+  .path:hover .path-media img { transform: none; }
+}
+.path-body { padding: 1.3rem 1.35rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
+.path-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+}
+.path h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 2vw, 1.6rem);
+  margin: 0 0 0.5rem;
+}
+.path h2 a:hover { color: var(--accent); }
+.path p { color: var(--text-muted); margin: 0 0 1rem; }
+.path-links {
+  list-style: none;
+  margin: 0 0 1.2rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.path-links a {
+  display: inline-block;
+  font-size: 0.82rem;
+  color: var(--text);
+  background: var(--accent-soft);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+}
+.path-links a:hover { color: var(--accent); }
+.path .cta {
+  margin-top: auto;
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+.path .cta:hover { text-decoration: underline; }
+
+/* Home — Learn to dive frame: landscape dive photos, so a wider 4:3 frame
+   than the 2:3 portrait frames below it. Four slides, 24s cycle. */
+.featured--wide { grid-template-columns: 1fr minmax(0, 520px); }
+.featured--wide .featured-photo { aspect-ratio: 4 / 3; }
+@media (max-width: 760px) {
+  .featured--wide { grid-template-columns: 1fr; }
+  .featured--wide .featured-photo { max-width: none; }
+}
+@media (max-width: 700px) {
+  .featured--wide .featured-photo { max-width: none; justify-self: stretch; }
+}
+
+/* Learn to dive page */
+.page-actions { margin: 1.25rem 0 0; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.page-header .page-actions { margin-top: 1.25rem; }
+.learn-banner {
+  margin: clamp(1.5rem, 4vw, 2.5rem) auto 0;
+}
+.learn-banner .banner-frame {
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--placeholder);
+}
+@media (max-width: 700px) {
+  .learn-banner .banner-frame { aspect-ratio: 4 / 3; }
+}
+.learn-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
+.learn-section { padding-top: clamp(2rem, 5vw, 3rem); }
+.learn-section .tiles { align-items: stretch; }
+.tile.package .package-for {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 0.8rem;
+}
+.tile.package h3 .tile-alt {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+.tile[id], .learn-section[id] { scroll-margin-top: 6rem; }
+.extra-offer {
+  margin: 1.25rem 0 0;
+  padding: 1.1rem 1.25rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 4px 4px 0;
+  color: var(--text);
+  font-size: 0.95rem;
+  max-width: 70ch;
+}
+.extra-offer a { color: var(--accent); font-weight: 600; }
+.extra-offer a:hover { text-decoration: underline; }
+
+/* FAQ — native <details>, no script. */
+.faq { max-width: 760px; }
+.faq details {
+  border-top: 1px solid var(--border);
+  padding: 0.9rem 0;
+}
+.faq details:last-child { border-bottom: 1px solid var(--border); }
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--accent); font-size: 1.2rem; line-height: 1; }
+.faq details[open] summary::after { content: "\2212"; }
+.faq details p { color: var(--text-muted); margin: 0.6rem 0 0; max-width: 64ch; }
+.learn-gallery { padding-bottom: 2rem; }
+
+/* Phones: both hero buttons on one line, and the slideshow arrows lifted
+   clear of the headline. */
+@media (max-width: 480px) {
+  .hero-actions { gap: 0.6rem; margin-top: 1.1rem; }
+  .hero-actions .btn { font-size: 0.84rem; padding: 0.65rem 1rem; }
+}
+@media (max-width: 700px) {
+  .hero > .slide-arrow { top: 26%; }
+}
+.learn-close { padding-bottom: clamp(3rem, 6vw, 4.5rem); }
+
+/* The extra menu item (Learn to dive / Buceo): keep every item on one line
+   and tighten spacing just above the phone breakpoint. */
+.nav-links > a, .nav-links > .has-dropdown { white-space: nowrap; }
+@media (min-width: 701px) and (max-width: 780px) {
+  .nav-links { gap: 0.8rem; font-size: 0.85rem; }
+  .nav-right { gap: 0.8rem; }
+  .lang-switch { padding-left: 0.8rem; }
+  nav.container { gap: 1rem; }
+}
+
+/* Tablets: the three cards stack, each with the photo beside the text so
+   the images don't grow to full width. */
+@media (min-width: 561px) and (max-width: 860px) {
+  .path { flex-direction: row; }
+  .path-media { flex: 0 0 38%; aspect-ratio: auto; position: relative; }
+  .path-media img { position: absolute; inset: 0; }
+}
+
+/* ==========================================================================
+   SSI CREDENTIAL — the SSI logo beside "Certified SSI Scuba Instructor"
+   (Learn to dive page header and the home dive section), plus a small
+   white badge on the home Scuba card photo. Only used on the dive side of
+   the site. Logo file: images/brand/ssi-logo.png (official artwork, keep
+   its colours as supplied).
+   ========================================================================== */
+.ssi-cred {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 1.4rem 0 0;
+}
+.ssi-cred img { width: auto; flex-shrink: 0; }
+.ssi-cred-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35;
+}
+.ssi-cred-text strong {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.98rem;
+  color: var(--text);
+}
+.ssi-cred-text span { font-size: 0.8rem; color: var(--text-muted); }
+.ssi-cred--sm { margin-top: 1.25rem; gap: 0.75rem; }
+.ssi-cred--sm .ssi-cred-text strong { font-size: 0.88rem; }
+
+.path-media { position: relative; }
+.ssi-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1;
+  background: #fff;
+  border-radius: 6px;
+  padding: 0.45rem 0.55rem;
+  line-height: 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+.path-media .ssi-badge img,
+.path:hover .path-media .ssi-badge img {
+  position: static;
+  width: auto;
+  object-fit: contain;
+  transform: none;
 }
