@@ -182,6 +182,20 @@
         "@type": "Service",
         "name": "Underwater photography classes"
       }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "SSI Advanced Adventurer course"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Lightroom editing classes"
+      }
     }
   ],
   "priceRange": "MXN 1,900+",
@@ -202,10 +216,23 @@
 <body>
   <header>
     <nav class="container">
-      <a class="wordmark" href="index.html"><span class="wordmark-name">Shem Katz</span> <span class="wordmark-sub">Scuba &amp; Photography</span></a>
+      <div class="brand">
+        <a class="wordmark" href="index.html"><span class="wordmark-name">Shem Katz</span> <span class="wordmark-sub">Scuba &amp; Photography</span></a>
+        <a class="nav-ssi" href="learn-to-dive.html"><img src="images/brand/ssi-logo-black.png" alt="SSI Scuba Instructor" width="439" height="233"></a>
+      </div>
       <div class="nav-right">
         <div class="nav-links">
           <a href="learn-to-dive.html">Learn to dive</a>
+          <div class="has-dropdown" tabindex="0">
+            Photography classes
+            <div class="dropdown">
+              <div class="dropdown-panel">
+                <a href="photography-classes.html#underwater">Underwater</a>
+                <a href="photography-classes.html#classic">Classic</a>
+                <a href="editing.html">Lightroom</a>
+              </div>
+            </div>
+          </div>
           <div class="has-dropdown" tabindex="0">
             Work
             <div class="dropdown">
@@ -220,7 +247,6 @@
           </div>
           <a href="shop.html">Prints</a>
           <a href="about.html">About</a>
-          <a href="editing.html">Editing</a>
           <a href="contact.html">Contact</a>
         </div>
         <div class="has-dropdown lang-switch" tabindex="0" aria-label="Language">
@@ -237,6 +263,10 @@
           <div class="mobile-panel">
             <a href="index.html" class="current">Home</a>
             <a href="learn-to-dive.html">Learn to dive</a>
+            <div class="sub-label">Photography classes</div>
+            <a href="photography-classes.html#underwater">Underwater</a>
+            <a href="photography-classes.html#classic">Classic</a>
+            <a href="editing.html">Lightroom</a>
             <div class="sub-label">Work</div>
             <a href="work-land.html">Land</a>
             <a href="work-underwater.html">Water</a>
@@ -246,7 +276,6 @@
             <hr>
             <a href="shop.html">Prints</a>
             <a href="about.html">About</a>
-            <a href="editing.html">Editing</a>
             <a href="contact.html">Contact</a>
             <hr>
             <div class="sub-label">Language</div>
@@ -276,6 +305,7 @@
         <div class="hero-actions">
           <a class="btn btn--light" href="learn-to-dive.html">Learn to dive</a>
           <a class="btn btn--ghost" href="work-couples.html">Book a photo session</a>
+          <a class="btn btn--ghost" href="photography-classes.html">Book a photography class</a>
         </div>
       </div>
     </section>
@@ -291,17 +321,18 @@
           <div class="path-body">
             <p class="path-eyebrow">Scuba</p>
             <h2><a href="learn-to-dive.html">Learn to dive</a></h2>
-            <p>Small-group SSI scuba diving courses in Puerto Escondido, from your first breath underwater to certified diver, taught in English or Spanish. Every course comes with photos of you underwater.</p>
+            <p>Personal SSI scuba diving courses in Puerto Escondido, private or in a group, from your first breath underwater to certified diver, taught in English or Spanish. Every course includes photos of your dives.</p>
             <ul class="path-links">
             <li><a href="learn-to-dive.html#try-scuba">Try Scuba</a></li>
             <li><a href="learn-to-dive.html#basic-diver">Basic Diver</a></li>
             <li><a href="learn-to-dive.html#open-water">Open Water</a></li>
+            <li><a href="learn-to-dive.html#advanced-adventurer">Advanced Adventurer</a></li>
             </ul>
             <a class="cta" href="learn-to-dive.html">See all courses &rarr;</a>
           </div>
         </article>
         <article class="path">
-          <a class="path-media" href="work-couples.html" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="images/couples/DSC02399-web-480.avif 480w, images/couples/DSC02399-web-800.avif 800w, images/couples/DSC02399-web-1200.avif 1200w, images/couples/DSC02399-web.avif 1333w" sizes="(max-width: 860px) calc(100vw - 2.5rem), 370px"><img src="images/couples/DSC02399-web.jpg" srcset="images/couples/DSC02399-web-480.jpg 480w, images/couples/DSC02399-web-800.jpg 800w, images/couples/DSC02399-web-1200.jpg 1200w, images/couples/DSC02399-web.jpg 1333w" sizes="(max-width: 860px) calc(100vw - 2.5rem), 370px" alt="" width="1333" height="2000" loading="lazy" style="object-position: center 38%"></picture></a>
+          <a class="path-media" href="work-couples.html" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="images/couples/DSC02399-web-480.avif 480w, images/couples/DSC02399-web-800.avif 800w, images/couples/DSC02399-web-1200.avif 1200w, images/couples/DSC02399-web.avif 1333w" sizes="(max-width: 860px) calc(100vw - 2.5rem), 370px"><img src="images/couples/DSC02399-web.jpg" srcset="images/couples/DSC02399-web-480.jpg 480w, images/couples/DSC02399-web-800.jpg 800w, images/couples/DSC02399-web-1200.jpg 1200w, images/couples/DSC02399-web.jpg 1333w" sizes="(max-width: 860px) calc(100vw - 2.5rem), 370px" alt="" width="1333" height="2000" loading="lazy" style="object-position: center 52%"></picture></a>
           <div class="path-body">
             <p class="path-eyebrow">Photography</p>
             <h2><a href="work-couples.html">Photo sessions</a></h2>
@@ -315,17 +346,17 @@
           </div>
         </article>
         <article class="path">
-          <a class="path-media" href="learn-to-dive.html#photo-classes" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="images/underwater/PC050119-web-480.avif 480w, images/underwater/PC050119-web-800.avif 800w, images/underwater/PC050119-web-1200.avif 1200w, images/underwater/PC050119-web-1600.avif 1600w, images/underwater/PC050119-web.avif 2000w" sizes="(max-width: 860px) calc(100vw - 2.5rem), 370px"><img src="images/underwater/PC050119-web.jpg" srcset="images/underwater/PC050119-web-480.jpg 480w, images/underwater/PC050119-web-800.jpg 800w, images/underwater/PC050119-web-1200.jpg 1200w, images/underwater/PC050119-web-1600.jpg 1600w, images/underwater/PC050119-web.jpg 2000w" sizes="(max-width: 860px) calc(100vw - 2.5rem), 370px" alt="" width="2000" height="1500" loading="lazy" style="object-position: center 8%"></picture></a>
+          <a class="path-media" href="photography-classes.html" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="images/underwater/PC050119-web-480.avif 480w, images/underwater/PC050119-web-800.avif 800w, images/underwater/PC050119-web-1200.avif 1200w, images/underwater/PC050119-web-1600.avif 1600w, images/underwater/PC050119-web.avif 2000w" sizes="(max-width: 860px) calc(100vw - 2.5rem), 370px"><img src="images/underwater/PC050119-web.jpg" srcset="images/underwater/PC050119-web-480.jpg 480w, images/underwater/PC050119-web-800.jpg 800w, images/underwater/PC050119-web-1200.jpg 1200w, images/underwater/PC050119-web-1600.jpg 1600w, images/underwater/PC050119-web.jpg 2000w" sizes="(max-width: 860px) calc(100vw - 2.5rem), 370px" alt="" width="2000" height="1500" loading="lazy" style="object-position: center 8%"></picture></a>
           <div class="path-body">
             <p class="path-eyebrow">Classes</p>
-            <h2><a href="learn-to-dive.html#photo-classes">Photography classes</a></h2>
-            <p>Photography and underwater photography classes: on land with a camera or phone, in the water for snorkellers, and the SSI Underwater Photo &amp; Video course for divers.</p>
+            <h2><a href="photography-classes.html">Photography classes</a></h2>
+            <p>Photography and underwater photography classes: on land, in the water for snorkellers, the SSI Underwater Photo &amp; Video course for divers, and Lightroom editing.</p>
             <ul class="path-links">
-            <li><a href="learn-to-dive.html#land-photo">On land</a></li>
-            <li><a href="learn-to-dive.html#snorkel-photo">Underwater</a></li>
-            <li><a href="learn-to-dive.html#photo-video">SSI Photo &amp; Video</a></li>
+            <li><a href="photography-classes.html#underwater">Underwater</a></li>
+            <li><a href="photography-classes.html#classic">Classic</a></li>
+            <li><a href="editing.html">Lightroom</a></li>
             </ul>
-            <a class="cta" href="learn-to-dive.html#photo-classes">See classes &rarr;</a>
+            <a class="cta" href="photography-classes.html">See classes &rarr;</a>
           </div>
         </article>
       </div>
@@ -335,10 +366,10 @@
          ABOUT TEASER
     ============================================================ -->
     <section class="container about-teaser">
-      <div class="about-photo"><picture><source type="image/avif" srcset="images/home/self_portrait-web-480.avif 480w, images/home/self_portrait-web-800.avif 800w, images/home/self_portrait-web-1200.avif 1200w, images/home/self_portrait-web.avif 1245w" sizes="(max-width: 700px) 240px, 420px"><img src="images/home/self_portrait-web.jpg" srcset="images/home/self_portrait-web-480.jpg 480w, images/home/self_portrait-web-800.jpg 800w, images/home/self_portrait-web-1200.jpg 1200w, images/home/self_portrait-web.jpg 1245w" sizes="(max-width: 700px) 240px, 420px" alt="Portrait of Shem Katz" width="1245" height="1400" loading="lazy"></picture></div>
+      <div class="about-photo about-photo--natural"><picture><source type="image/avif" srcset="images/home/shem-turtles-web-480.avif 480w, images/home/shem-turtles-web-800.avif 800w, images/home/shem-turtles-web-1200.avif 1200w, images/home/shem-turtles-web.avif 1500w" sizes="(max-width: 700px) 104px, 200px"><img src="images/home/shem-turtles-web.jpg" srcset="images/home/shem-turtles-web-480.jpg 480w, images/home/shem-turtles-web-800.jpg 800w, images/home/shem-turtles-web-1200.jpg 1200w, images/home/shem-turtles-web.jpg 1500w" sizes="(max-width: 700px) 104px, 200px" alt="Shem Katz with his camera on a beach of nesting olive ridley turtles" width="1500" height="2667" loading="lazy"></picture></div>
       <div>
         <h2>About</h2>
-        <p>I'm Shem &mdash; a photographer and SSI Scuba Instructor from the UK, based in Puerto Escondido, Oaxaca, and happy to collaborate worldwide. My passion is to share beautiful encounters I am lucky to have on a daily basis, whether that be below or above the surface &mdash; and now to help you find them too, with dive courses and photography classes.</p>
+        <p>I'm Shem &mdash; a photographer and SSI Scuba Instructor from the UK, based in Puerto Escondido, Oaxaca, and happy to collaborate worldwide. My passion is to share beautiful encounters I am lucky to have on a daily basis, whether that be below or above the surface, and now to share them with you through dive courses and photography classes.</p>
         <a class="cta" href="about.html">More about me &rarr;</a>
       </div>
     </section>
@@ -350,7 +381,7 @@
     <section class="container featured featured--wide">
       <div class="featured-text">
         <h2>Your first breath underwater</h2>
-        <p>SSI scuba courses in Puerto Escondido, from a first Try Scuba to your Open Water certification, in small groups and at your pace. Your instructor is also your photographer, so you go home with the photos to prove it.</p>
+        <p>SSI scuba courses in Puerto Escondido, from a first Try Scuba to your Open Water certification and beyond, private or in a group, at your own pace. Your instructor is also your photographer, so you go home with beautiful memories of your first dives.</p>
         <a class="cta" href="learn-to-dive.html">See courses &amp; details &rarr;</a>
         <div class="ssi-cred ssi-cred--sm"><img src="images/brand/ssi-logo.png" alt="" width="292" height="158" style="height:26px"><span class="ssi-cred-text"><strong>Certified SSI Scuba Instructor</strong></span></div>
       </div>
@@ -391,8 +422,8 @@
     ============================================================ -->
     <section class="container featured">
       <div class="featured-text">
-        <h2>Portraits</h2>
-        <p>A selection of portraits from my portfolio including natural encounters and commissioned model shoots.</p>
+        <h2>Private photo shoots</h2>
+        <p>Private shoots for you, your family or your brand: natural portraits, editorial and commissioned model shoots, on land or in the water.</p>
         <div class="has-dropdown cta-dropdown" tabindex="0" aria-label="See more of my work">
           <span class="cta">See more of my work &rarr;</span>
           <div class="dropdown">

@@ -1418,7 +1418,7 @@ picture.featured-slide img { width: 100%; height: 100%; object-fit: cover; displ
   margin: clamp(1.5rem, 4vw, 2.5rem) auto 0;
 }
 .learn-banner .banner-frame {
-  aspect-ratio: 21 / 9;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   border-radius: 4px;
   background: var(--placeholder);
@@ -1426,7 +1426,7 @@ picture.featured-slide img { width: 100%; height: 100%; object-fit: cover; displ
 @media (max-width: 700px) {
   .learn-banner .banner-frame { aspect-ratio: 4 / 3; }
 }
-.learn-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
+.learn-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
 .learn-section { padding-top: clamp(2rem, 5vw, 3rem); }
 .learn-section .tiles { align-items: stretch; }
 .tile.package .package-for {
@@ -1570,4 +1570,138 @@ h2.section-label {
   display: block;
   margin-top: 0.75rem;
   line-height: 1.5;
+}
+
+/* ==========================================================================
+   HEADER v2 (Nov 2026) — SSI logo beside the wordmark, Photography classes
+   menu, Editing folded into Lightroom. With the extra menu the full row no
+   longer fits on tablets, so the native mobile menu takes over below 1100px.
+   ========================================================================== */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+.nav-ssi { display: block; line-height: 0; opacity: 0.88; transition: opacity 0.2s ease; }
+.nav-ssi:hover { opacity: 1; }
+.nav-ssi img { height: 27px; width: auto; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .nav-ssi img { filter: invert(1); }
+}
+:root[data-theme="dark"] .nav-ssi img { filter: invert(1); }
+.nav-links { gap: 1.6rem; }
+@media (max-width: 980px) {
+  .nav-links { display: none; }
+  .mobile-menu { display: block; position: relative; }
+}
+@media (max-width: 400px) {
+  .brand { gap: 0.6rem; }
+  .nav-ssi img { height: 21px; }
+  .nav-right { gap: 0.75rem; }
+  .lang-switch { padding-left: 0.7rem; }
+}
+@media (max-width: 340px) {
+  .nav-ssi { display: none; }
+}
+
+
+/* ==========================================================================
+   ROUND 7 (Nov 2026) — two-up tiles, photo row, page header with a photo,
+   uncropped About photos.
+   ========================================================================== */
+.tiles--2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 800px) { .tiles--2 { grid-template-columns: 1fr; } }
+.tile-more { margin: -0.4rem 0 1.1rem; font-size: 0.88rem; }
+.tile-more a { color: var(--accent); font-weight: 600; }
+.tile-more a:hover { text-decoration: underline; }
+.extra-offer + .extra-offer { margin-top: 0.75rem; }
+
+/* Three photos side by side, each shown whole (all 4:3). */
+.photo-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+@media (max-width: 760px) { .photo-row { grid-template-columns: 1fr; } }
+.photo-row-item { aspect-ratio: 4 / 3; overflow: hidden; border-radius: 3px; background: var(--placeholder); }
+.photo-row-item img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Page header with a portrait photo beside the text (Photography classes). */
+.page-header--photo {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 360px);
+  gap: var(--gap);
+  align-items: center;
+}
+.page-header--photo .page-header-photo { border-radius: 4px; overflow: hidden; background: var(--placeholder); }
+.page-header--photo .page-header-photo img { width: 100%; height: auto; display: block; }
+@media (max-width: 760px) {
+  .page-header--photo { grid-template-columns: 1fr; }
+  .page-header--photo .page-header-photo { max-width: 360px; }
+}
+.page-header .eyebrow a { color: inherit; }
+.page-header .eyebrow a:hover { color: var(--accent); }
+
+/* About photos shown uncropped, at their own shape. */
+.about-photo.about-photo--natural,
+.about-teaser .about-photo.about-photo--natural,
+.about-full .about-photo.about-photo--natural { aspect-ratio: auto; background: none; }
+.about-photo--natural img,
+.about-teaser .about-photo--natural img { width: 100%; height: auto; object-fit: initial; aspect-ratio: auto; }
+.about-teaser { grid-template-columns: 200px 1fr; }
+.about-full .about-photo--natural { max-width: 360px; }
+.about-photo--second { margin-top: 1rem; }
+@media (max-width: 700px) {
+  .about-teaser { grid-template-columns: 104px 1fr; }
+  .about-teaser .about-photo--natural img { aspect-ratio: auto; }
+  .about-full .about-photo--natural { max-width: 240px; }
+}
+
+/* Bomstad Display draws "í"/"Í" much wider than "i"/"I", leaving a gap
+   inside words such as "fotografía". On the Spanish pages each accented i
+   in a display heading is wrapped in .ifix, and this pulls the next letter
+   back to the normal spacing. */
+.ifix { letter-spacing: -0.232em; }
+.ifix--cap { letter-spacing: -0.211em; }
+.path-eyebrow .ifix--cap { letter-spacing: -0.011em; }
+
+/* ==========================================================================
+   HEADER v3 (Nov 2026) — name and "Scuba & Photography" on one line,
+   divided by a thin vertical rule; SSI logo beside it, kept quiet.
+   Phones fall back to the stacked two-line lockup.
+   ========================================================================== */
+.wordmark { flex-direction: row; align-items: center; line-height: 1.2; }
+.wordmark-sub {
+  margin: 0 0 0 0.85rem;
+  padding: 0.3rem 0 0.3rem 0.85rem;
+  border-left: 1px solid color-mix(in srgb, var(--text) 28%, transparent);
+  line-height: 1;
+}
+.brand { gap: 1.1rem; }
+.nav-ssi { opacity: 0.4; }
+.nav-ssi:hover { opacity: 0.75; }
+.nav-ssi img { height: 22px; }
+@media (max-width: 1180px) {
+  .nav-links { display: none; }
+  .mobile-menu { display: block; position: relative; }
+}
+@media (max-width: 600px) {
+  .wordmark { flex-direction: column; align-items: flex-start; line-height: 1.05; }
+  .wordmark-sub { margin: 0.3rem 0 0; padding: 0; border-left: 0; }
+}
+@media (max-width: 400px) {
+  .nav-ssi img { height: 19px; }
+}
+@media (max-width: 600px) {
+  .brand { gap: 0.75rem; }
+}
+@media (max-width: 400px) {
+  .brand { gap: 0.55rem; }
+}
+.lang-switch, .mobile-menu summary { white-space: nowrap; }
+@media (max-width: 380px) {
+  .nav-right { gap: 0.6rem; }
+  .lang-switch { padding-left: 0.6rem; }
+  .nav-ssi img { height: 17px; }
 }
